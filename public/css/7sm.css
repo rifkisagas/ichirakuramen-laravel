@@ -1,0 +1,324 @@
+@font-face {
+    font-family: westmount-light;
+    src: url(../fonts/Westmount\ Light.ttf);
+}
+@font-face{
+    font-family: westmount-ex-light;
+    src: url(../fonts/Westmount\ ExtraLight.ttf);
+}
+header{
+    background: url(../images/narutobg.jpg) no-repeat center ;
+    /* background-size: 2400px; */
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* opacity: 0.; */
+}
+.logo {
+    line-height: 60px;
+    position: fixed;
+    float: left;
+    margin: 16px 46px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+.logo img{
+    width: 14%; /* or any custom size */
+    height: 14%; 
+    /* object-fit: contain; */
+}
+nav {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    line-height: 40px;
+}
+
+nav ul {
+    line-height: 65px;
+    list-style: none;
+    background: #feefef;
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+}
+nav.black ul {
+    background: #FEEFEF;
+    /* position: absolute; */
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 16px 40px;;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: westmount-light;
+    --s: 0.1em;   /* the thickness of the line */
+    --c: #1095c1; /* the color */
+    
+    color: #F04D50;
+    padding-bottom: var(--s);
+    background: 
+      linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
+      linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: 0.5s;
+
+}
+nav ul li a:hover{
+    --_p: 100%
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-weight: lighter;
+    position: relative;
+}
+
+.container-p1{
+    max-width: 70rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+/* Home Header */
+header{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+header:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 25;
+}
+
+
+/* Home Title */
+.big-title{
+    position: absolute;
+    line-height: 4rem;
+    top: calc(46% - 2rem);
+    width: 100%;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 600;
+    color: #F04D50;
+    font-family: westmount-light;
+}
+.big-title-comment{
+    position: absolute;
+    line-height: 4rem;
+    top: calc(54% - 2rem);
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #D75053;
+    font-family: westmount-ex-light;
+}
+
+.big-title-res{
+    position: absolute;
+    line-height: 4rem;
+    top: calc(78% - 2rem);
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #D75053;
+    font-family: westmount-light;
+}
+.big-title-out.aos-animate{
+    opacity: 0;
+}
+
+/* about */
+
+.about{
+    background-color: #fff;
+    padding-top: 60px;
+    text-align: center;
+    color: #151515;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.about-title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.about-desc{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    padding-bottom: 20px;
+}
+
+.about-port{
+    padding-bottom: 40px;
+    width: 80%;
+    margin: auto;
+}
+
+/* Service */
+
+.service{
+    background-color: #000;
+    padding-top: 40px;
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.service-title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    padding-bottom: 30px;
+    color: #fff;
+}
+.cg-custom{
+    padding-bottom: 60px;
+}
+
+/* Contact */
+.contact{
+    background-color: rgba(150, 150, 150, 0.651);
+    padding-top: 40px;
+    text-align: center;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-bottom: 40px;
+}
+.contact-left{
+    opacity: 0.6;
+    background: url(/images/skyscrapper.jpg);
+    background-size: cover;
+    color: #fff;
+    height: 850px;
+}
+.contact-right{
+    background: #fff;
+    padding-top: 40px;
+}
+
+.contact-right-title{
+    font-family: 'Poppins', sans-serif;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.contact-right-form{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.contact-right-form label{
+    font-family: 'Poppins', sans-serif;
+    font-size: larger;
+}
+
+.custom{
+    padding-bottom: 20px;
+}
+
+/* Founder */
+
+.founder{
+    background: url(/images/bg.jpg);
+    padding-top: 40px;
+    /* text-align: center; */
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 870px;
+}
+.info{
+    background:rgba(23, 20, 20, 0.58);
+    margin-top: 4em;
+}
+.info-right{
+    padding: 3em;
+    padding-left: 3em;
+}
+.info-right h1 {
+    font-size: 1.5em;
+    color: #fff;
+    margin: 0.5em 0 0;
+    font-weight: bold;
+    background: #0583D2;
+    display: inline-block;
+    padding: .5em 1.5em;
+    position: relative;
+	    /* box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+.info-right h1:before {
+    position: absolute;
+    content: '';
+    bottom: -9px;
+    left: 12px;
+    border-style: solid;
+    border-width: 14px 11px 0 12px;
+    border-color: #0583D2 transparent transparent transparent;
+}
+.info-right h6 {
+    font-size: 1em;
+    color: #C7C7C7;
+    margin-top: 0.8em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+ul.address {
+    margin-top: 2em;
+    border-top: 1px solid #AFAFAF;
+    padding-top: 0.5em;
+}
+ul.address li {
+    display: block;
+}
+ul.address li ul.address-text li {
+    display: inline-block;
+    font-size: 1em;
+    color: #fff;
+    margin-top: 1em;
+	font-weight: 400;
+}
+ul.address li ul.address-text li a {
+    color: #fff;
+	text-decoration:none;
+}
+ul.address li ul.address-text li a:hover{
+    color: #0583D2;
+}
+ul.address-text {
+    padding: 0;
+}
+ul.address-text b {
+    color:#fff;
+}
+ul.address li ul.address-text li:nth-child(1){
+	width: 20%;
+}
+.info-right {
+    padding-right: 20px;
+}
+.info-right img {
+    width: 80%;
+    margin-top: 19px;
+    /* padding-right: 60px; */
+}
