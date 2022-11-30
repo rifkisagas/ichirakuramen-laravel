@@ -11,12 +11,12 @@
 </head>
 <body>
   <header>
-    <div class="wrapper">
-      <nav>
-        <div class="logo">
-          <img src="images/ichirakuramen.png">    
-        </div>
+    <div class="wrapper" id="wrapper">
+      <nav data-aos="fade-down" data-aos-delay="300" data-aos-duration="1150">
         <div class="menu">
+          <div class="logo" id="logo">
+            <img src="images/ichirakuramen.png">    
+          </div>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#lists">Join our List</a></li>
@@ -28,13 +28,21 @@
           </ul>
         </div>
       </nav>
+    </div>
+    <div id="wrapper-bg" class="wrapper-bg">
       <div id="home">
-        <h1 class="big-title translate" data-aos="fade-down" >I c h i r a k u</h1>
+        <h1 class="big-title translate" data-aos="fade-down" data-aos-delay="1000" data-aos-duration="1500" >I c h i r a k u</h1>
         {{-- <h1 class="big-title translate" data-aos="fade-down" ><img src="/images/ichirakuramen."></h1> --}}
-        <h3 class="big-title-comment translate" data-aos="fade-up" data-aos-duration="2000">・The Most Finest Ramen in Konohagakure・</h3>
+        <h3 class="big-title-comment translate" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="2000">・The Most Finest Ramen in Konohagakure・</h3>
       </div>
     </div>
   </header>
+  <div id="reservations" data-aos="fade-up">
+    <div class="reservations-img">
+
+    </div>
+    {{-- <h1>Test</h1> --}}
+  </div>
   <div id="about" class="about">
     <div class="about-title" data-aos="fade-up">
       <h1 class="hvr-shrink">The World's Largest Cyber Security </h1>
@@ -50,7 +58,7 @@
           <li data-target="#flowcarousel" data-slide-to="1"></li>
           <li data-target="#flowcarousel" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner">
+        {{-- <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/images/hq.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
@@ -69,122 +77,10 @@
         </a>
         <a class="carousel-control-next" href="#flowcarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div id="service" class="service">
-    <div class="service-title" data-aos="zoom-in">
-      <h1>Our Finest Service</h1>
-    </div>
-    <div class="card-group cg-custom">
-      <div class="card" data-aos="zoom-in-up">
-        <img class="card-img-top" src="/images/bug.jpg" alt="Card image cap" height="300">
-        <div class="card-body">
-          <h5 class="card-title">Bug Bounty Hunter</h5>
-          <p class="card-text">Our professionals mostly experienced in this path for approximately 5 years. And our recent founded bug is from IBM Cloud Service.</p>
-          <a href="#" class="btn btn-dark">Hire us!</a>
-        </div>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <img class="card-img-top" src="images/network.jpg" alt="Card image cap" height="300">
-        <div class="card-body">
-          <h5 class="card-title">Network Defence Operation</h5>
-          <p class="card-text">Most of our operators are an expert and EC-Council Certified Network Defender (CND). We took part in the Russian-Ukrainian Cyberwarfare</p>
-          <a href="#" class="btn btn-dark">Hire us!</a>
-        </div>
-      </div>
-      <div class="card" data-aos="zoom-in-up">
-        <img class="card-img-top" src="images/pentest.jpg" alt="Card image cap" height="300">
-        <div class="card-body">
-          <h5 class="card-title">Penetration Testing</h5>
-          <p class="card-text">IT Flow's pentesters are mostly the top players from Hackthebox Hacking Playground and very agile while executing the testing procedures. </p>
-          <a href="#" class="btn btn-dark">Hire us!</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="founder" class="founder">
-    <div class="info" data-aos="fade-up">
-      <div class="row">
-        <div class="col info-right">
-          <h1>Hi !</h1>
-          <h6>Founder of IT Flow</h6>
-          <ul class="address">
-            <li>
-              <ul class="address-text">
-                <li><b>NAME</b></li>
-                <li>Muhamad Rifki Arisagas</li>
-              </ul>
-            </li>
-            <li>
-              <ul class="address-text">
-                <li><b>D.O.B</b></li>
-                <li>26-06-2002</li>
-              </ul>
-            </li>
-            <li>
-              <ul class="address-text">
-                <li><b>PHONE </b></li>
-                <li>+62 819 9532 4395</li>
-              </ul>
-            </li>
-            <li>
-              <ul class="address-text">
-                <li><b>ADDRESS </b></li>
-                <li>Sindangjaya, Cipanas, Cianjur.</li>
-              </ul>
-            </li>
-            <li>
-              <ul class="address-text">
-                <li><b>E-MAIL </b></li>
-                <li><a href="mailto:arisagasr@gmail.com"> arisagasr@gmail.com</a></li>
-              </ul>
-            </li>
-            <li>
-              <ul class="address-text">
-                <li><b>LINKTREE </b></li>
-                <li><a href="https://linktr.ee/rifkisagas">linktr.ee/rifkisagas</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="col info-right">
-          <img src="images/img1.jpg" alt="">
-        </div> 
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  </div>
-  <div id="contact" class="contact">
-    <div class="contact-grid row row-cols-2" data-aos="fade-up">
-      <div class="contact-left">
-      </div>
-      <div class="contact-right">
-        <div class="contact-right-title">
-          <h2>Send Us A Message</h2>
-        </div>
-        <div class="contact-right-form">
-          <form>
-            <div class="form-group custom">
-              <label for="exampleInputName1">Full Name</label>
-              <input type="text" class="form-control form-control-lg" id="exampleInputName1" placeholder="Enter Full Name">
-            </div>
-            <div class="form-group custom">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
-            </div>
-            <div class="form-group custom">
-              <label for="exampleInputPhone1">Phone Number</label>
-              <input type="password" class="form-control form-control-lg" id="exampleInputPhone1" placeholder="+1 123 12345">
-            </div>
-            <div class="form-group custom">
-              <label for="exampleTextarea1">Message</label>
-              <textarea class="form-control form-control-lg" id="exampleTextarea1" rows="5" placeholder="Write us a message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-dark">Submit</button>
-          </form>
-        </div>
+        </a> --}}
+        <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas vero sequi similique officia est provident. Dicta quibusdam nam, odio eius voluptatum optio cumque natus, atque exercitationem accusantium a dolor necessitatibus.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ratione suscipit inventore iste est. Ut dolor dolorum maiores quae quo nostrum deserunt, ab dolorem, molestiae veniam exercitationem ratione aperiam fugit.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, distinctio earum ratione magni porro dolor non necessitatibus eaque minima quisquam. Iusto quia dicta ut temporibus! Provident dolorum incidunt corrupti! Expedita!</h1>
       </div>
     </div>
   </div>
@@ -193,15 +89,31 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
+  $('#wrapper-bg').fadeOut();
+  $('#wrapper-bg').fadeIn();
+  $('#logo').fadeOut();
   AOS.init();
+
+
   $(window).on("scroll", function() {
-    if($(window).scrollTop()) {
+    if($(window).scrollTop() > 800) {
       $('nav').addClass('black');
+      // $("nav ul li a").css("color", "#D75053");
+      $('#logo').fadeIn();
     }
     else{
       $('nav').removeClass('black');
+      // $("nav ul li a").css("color", "#000");
+      $('#logo').fadeOut();
     }
-  })
+  });
+  // $(window).on("scroll", function() {
+  //   if($(window).scrollTop() > 400 && $(this).scrollTop() < 800) {
+      
+  //   } else {
+      
+  //   }
+  // });
 </script>
 </body>
 </html>

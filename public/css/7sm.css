@@ -6,8 +6,17 @@
     font-family: westmount-ex-light;
     src: url(../fonts/Westmount\ ExtraLight.ttf);
 }
-header{
-    background: url(../images/narutobg.jpg) no-repeat center ;
+
+@font-face{
+    font-family: westmount-regular;
+    src: url(../fonts/Westmount\ Regular.ttf);
+}
+
+body{
+    background-color: #FEEFEF;
+}
+.wrapper-bg{
+    background: url(../images/visual-darken.jpg) no-repeat center ;
     /* background-size: 2400px; */
     height: 100%;
     background-position: center;
@@ -40,11 +49,10 @@ nav {
 nav ul {
     line-height: 65px;
     list-style: none;
-    background: #feefef;
-    overflow: hidden;
-    color: #fff;
+    background: #feefef00;
+    /* overflow: hidden; */
     padding: 0;
-    text-align: right;
+    text-align: center;
     margin: 0;
     padding-right: 40px;
     transition: 1s;
@@ -52,6 +60,8 @@ nav ul {
 nav.black ul {
     background: #FEEFEF;
     /* position: absolute; */
+    text-align: right;
+    color: #D75053;
 }
 
 nav ul li {
@@ -61,20 +71,16 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    font-size: 18px;
-    font-family: westmount-light;
-    --s: 0.1em;   /* the thickness of the line */
-    --c: #1095c1; /* the color */
+    font-size: 22px;
+    font-family: westmount-regular;
     
-    color: #F04D50;
-    padding-bottom: var(--s);
+    color: #000;
     background: 
-      linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
-      linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+      linear-gradient(90deg,#1095c1 50%,#000 0) no-repeat;
     -webkit-background-clip: text,padding-box;
             background-clip: text,padding-box;
     transition: 0.5s;
-
+    position: relative;
 }
 nav ul li a:hover{
     --_p: 100%
@@ -121,7 +127,7 @@ header:after{
     text-align: center;
     font-size: 5rem;
     font-weight: 600;
-    color: #F04D50;
+    color: #FEEFEF;
     font-family: westmount-light;
 }
 .big-title-comment{
@@ -132,7 +138,7 @@ header:after{
     text-align: center;
     font-size: 2rem;
     font-weight: 600;
-    color: #D75053;
+    color: #ecd1d1;
     font-family: westmount-ex-light;
 }
 
@@ -151,10 +157,26 @@ header:after{
     opacity: 0;
 }
 
+/* Reservations */
+#reservations{
+    padding-top: 800px;
+    background: #000;
+}
+.reservations-img{
+    background: url(../images/visual2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1200px;
+}
+
 /* about */
 
 .about{
-    background-color: #fff;
+    background: url(../images/visual.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding-top: 60px;
     text-align: center;
     color: #151515;
@@ -321,4 +343,12 @@ ul.address li ul.address-text li:nth-child(1){
     width: 80%;
     margin-top: 19px;
     /* padding-right: 60px; */
+}
+
+[data-aos="fade-out"] {
+    opacity: 0;
+    transition-property: opacity;
+  }
+[data-aos="fade-out"].aos-animate {
+    opacity: 1;
 }
