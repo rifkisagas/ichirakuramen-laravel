@@ -49,7 +49,7 @@ nav {
 nav ul {
     line-height: 65px;
     list-style: none;
-    background: #feefef00;
+    background: #00000081;
     /* overflow: hidden; */
     padding: 0;
     text-align: center;
@@ -61,7 +61,6 @@ nav.black ul {
     background: #FEEFEF;
     /* position: absolute; */
     text-align: right;
-    color: #D75053;
 }
 
 nav ul li {
@@ -71,12 +70,10 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    font-size: 22px;
+    font-size: 16px;
     font-family: westmount-regular;
     
-    color: #000;
-    background: 
-      linear-gradient(90deg,#1095c1 50%,#000 0) no-repeat;
+    color: #AFAFAF;
     -webkit-background-clip: text,padding-box;
             background-clip: text,padding-box;
     transition: 0.5s;

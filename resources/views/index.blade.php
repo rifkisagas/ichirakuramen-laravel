@@ -33,7 +33,7 @@
       <div id="home">
         <h1 class="big-title translate" data-aos="fade-down" data-aos-delay="1000" data-aos-duration="1500" >I c h i r a k u</h1>
         {{-- <h1 class="big-title translate" data-aos="fade-down" ><img src="/images/ichirakuramen."></h1> --}}
-        <h3 class="big-title-comment translate" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="2000">・The Most Finest Ramen in Konohagakure・</h3>
+        <h3 class="big-title-comment translate" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="2000">・The Finest Ramen from The Hidden Leaf Village・</h3>
       </div>
     </div>
   </header>
@@ -96,15 +96,17 @@
 
 
   $(window).on("scroll", function() {
-    if($(window).scrollTop() > 800) {
-      $('nav').addClass('black');
+    if($(window).scrollTop()) {
+      $('nav').addClass('black').fadeIn();
+      $('nav ul li a').css({"color":"#D75053"});
       // $("nav ul li a").css("color", "#D75053");
       $('#logo').fadeIn();
     }
     else{
-      $('nav').removeClass('black');
+      $('nav').removeClass('black').fadeIn();
       // $("nav ul li a").css("color", "#000");
       $('#logo').fadeOut();
+      $('nav ul li a').css({"color":"#AFAFAF"});
     }
   });
   // $(window).on("scroll", function() {
