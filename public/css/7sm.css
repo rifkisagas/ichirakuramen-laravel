@@ -13,7 +13,7 @@
 }
 
 body{
-    background-color: #FEEFEF;
+    background-color: #363333;
 }
 .wrapper-bg{
     background: url(../images/visual-darken.jpg) no-repeat center ;
@@ -61,6 +61,7 @@ nav.black ul {
     background: #FEEFEF;
     /* position: absolute; */
     text-align: right;
+    
 }
 
 nav ul li {
@@ -74,13 +75,11 @@ nav ul li a {
     font-family: westmount-regular;
     
     color: #AFAFAF;
-    -webkit-background-clip: text,padding-box;
-            background-clip: text,padding-box;
     transition: 0.5s;
     position: relative;
 }
 nav ul li a:hover{
-    --_p: 100%
+    color: white;
 }
 
 body{
@@ -156,18 +155,45 @@ header:after{
 
 /* Reservations */
 #reservations{
-    padding-top: 800px;
-    background: #000;
+    padding-top: 120px; 
 }
-.reservations-img{
-    background: url(../images/visual2.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 1200px;
+.res-container{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.res-content{
+    position: relative;
+    font-style: westmount-light;
+    color: #000;
+}
+/* .content{
+    float: right;
+    width: 300px;
+    border: 15px solid green;
+} */
+/* about */
+.white-box { 
+    width: auto; height: auto; margin-top: 50px;   
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 40px;
 }
 
-/* about */
+.box-pad{
+    padding: 40px 40px 40px 40px;
+}
+.box-marginbot{
+    margin-bottom: 80px;
+}
+
 
 .about{
     background: url(../images/visual.jpg);
@@ -215,131 +241,6 @@ header:after{
 }
 .cg-custom{
     padding-bottom: 60px;
-}
-
-/* Contact */
-.contact{
-    background-color: rgba(150, 150, 150, 0.651);
-    padding-top: 40px;
-    text-align: center;
-    padding-left: 200px;
-    padding-right: 200px;
-    padding-bottom: 40px;
-}
-.contact-left{
-    opacity: 0.6;
-    background: url(/images/skyscrapper.jpg);
-    background-size: cover;
-    color: #fff;
-    height: 850px;
-}
-.contact-right{
-    background: #fff;
-    padding-top: 40px;
-}
-
-.contact-right-title{
-    font-family: 'Poppins', sans-serif;
-    padding-top: 20px;
-    padding-bottom: 30px;
-}
-
-.contact-right-form{
-    padding-left: 60px;
-    padding-right: 60px;
-}
-.contact-right-form label{
-    font-family: 'Poppins', sans-serif;
-    font-size: larger;
-}
-
-.custom{
-    padding-bottom: 20px;
-}
-
-/* Founder */
-
-.founder{
-    background: url(/images/bg.jpg);
-    padding-top: 40px;
-    /* text-align: center; */
-    padding-left: 40px;
-    padding-right: 40px;
-    height: 870px;
-}
-.info{
-    background:rgba(23, 20, 20, 0.58);
-    margin-top: 4em;
-}
-.info-right{
-    padding: 3em;
-    padding-left: 3em;
-}
-.info-right h1 {
-    font-size: 1.5em;
-    color: #fff;
-    margin: 0.5em 0 0;
-    font-weight: bold;
-    background: #0583D2;
-    display: inline-block;
-    padding: .5em 1.5em;
-    position: relative;
-	    /* box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); */
-}
-.info-right h1:before {
-    position: absolute;
-    content: '';
-    bottom: -9px;
-    left: 12px;
-    border-style: solid;
-    border-width: 14px 11px 0 12px;
-    border-color: #0583D2 transparent transparent transparent;
-}
-.info-right h6 {
-    font-size: 1em;
-    color: #C7C7C7;
-    margin-top: 0.8em;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-ul.address {
-    margin-top: 2em;
-    border-top: 1px solid #AFAFAF;
-    padding-top: 0.5em;
-}
-ul.address li {
-    display: block;
-}
-ul.address li ul.address-text li {
-    display: inline-block;
-    font-size: 1em;
-    color: #fff;
-    margin-top: 1em;
-	font-weight: 400;
-}
-ul.address li ul.address-text li a {
-    color: #fff;
-	text-decoration:none;
-}
-ul.address li ul.address-text li a:hover{
-    color: #0583D2;
-}
-ul.address-text {
-    padding: 0;
-}
-ul.address-text b {
-    color:#fff;
-}
-ul.address li ul.address-text li:nth-child(1){
-	width: 20%;
-}
-.info-right {
-    padding-right: 20px;
-}
-.info-right img {
-    width: 80%;
-    margin-top: 19px;
-    /* padding-right: 60px; */
 }
 
 [data-aos="fade-out"] {
