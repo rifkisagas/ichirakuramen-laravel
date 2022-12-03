@@ -5,7 +5,7 @@
             <img src="images/ichirakuramen.png">    
         </div>
         <ul>
-            <li><a href="#home" class="hvr-grow">Home</a></li>
+            <li><a href="/home" class="hvr-grow">Home</a></li>
             <li><a href="#gallery" class="hvr-grow">Gallery</a></li>
             <li><a href="#contact" class="hvr-grow">Contact</a></li>
             <li><a href="#menu" class="hvr-grow">Menu</a></li>
