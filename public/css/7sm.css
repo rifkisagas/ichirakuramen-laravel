@@ -64,6 +64,23 @@ nav.black ul {
     
 }
 
+nav.special ul{
+    background: #FEEFEF;
+    /* position: absolute; */
+    text-align: right;
+}
+
+nav.special ul li a{
+    color: #D75053;
+    /* position: absolute; */
+    /* text-align: right; */
+}
+nav.special ul li a:hover{
+    color: #D75053;
+    /* position: absolute; */
+    /* text-align: right; */
+}
+
 nav ul li {
     display: inline-block;
     padding: 16px 40px;;
@@ -241,6 +258,19 @@ header:after{
 }
 .cg-custom{
     padding-bottom: 60px;
+}
+
+/* Menu */
+.menu-title{
+    position: absolute;
+    line-height: 4rem;
+    top: calc(46% - 2rem);
+    width: 100%;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 600;
+    color: #FEEFEF;
+    font-family: westmount-light;
 }
 
 [data-aos="fade-out"] {

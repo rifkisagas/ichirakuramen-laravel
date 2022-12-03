@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Most Finest Ramen in Konohagakure</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="css/7sm.css" rel="stylesheet">
-    <link href="css/hover.css" rel="stylesheet">
-</head>
+@include('layouts.head')
 <body>
   <header>
     <div class="wrapper" id="wrapper">
       <nav data-aos="fade-down" data-aos-delay="300" data-aos-duration="1150">
         <div class="menu">
           <div class="logo" id="logo">
-            <img src="images/ichirakuramen.png">    
+              <img src="images/ichirakuramen.png">    
           </div>
           <ul>
-            <li><a href="#home" class="hvr-grow">Home</a></li>
-            <li><a href="#lists" class="hvr-grow">Join our List</a></li>
-            <li><a href="#reservations" class="hvr-grow">Reservations</a></li>
-            <li><a href="#events" class="hvr-grow">Special Events</a></li>
-            <li><a href="#gallery" class="hvr-grow">Gallery</a></li>
-            <li><a href="#contact" class="hvr-grow">Contact</a></li>
-            <li><a href="#menu" class="hvr-grow">Menu</a></li>
+              <li><a href="#home" class="hvr-grow">Home</a></li>
+              {{-- <li><a href="#lists" class="hvr-grow">Join our List</a></li>
+              <li><a href="#reservations" class="hvr-grow">Reservations</a></li>
+              <li><a href="#events" class="hvr-grow">Special Events</a></li> --}}
+              <li><a href="#gallery" class="hvr-grow">Gallery</a></li>
+              <li><a href="#contact" class="hvr-grow">Contact</a></li>
+              <li><a href="menu" class="hvr-grow">Menu</a></li>
           </ul>
         </div>
       </nav>
@@ -85,14 +77,8 @@
     </div>
   </div>
 </body>
-<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
-  <div class="container text-center">
-    <small>Copyright &copy; Ichiraku</small>
-  </div>
-</footer>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+@include('layouts.foot')
+@include('layouts.script')
 <script>
   $('#wrapper-bg').fadeOut();
   $('#wrapper-bg').fadeIn();
@@ -121,5 +107,4 @@
   //   }
   // });
 </script>
-</body>
 </html>
