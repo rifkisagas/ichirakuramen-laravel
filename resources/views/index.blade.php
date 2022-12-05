@@ -10,12 +10,12 @@
               <img src="images/ichirakuramen.png">    
           </div>
           <ul>
-              <li><a href="#home" class="hvr-grow">Home</a></li>
+              <li><a href="home" class="hvr-grow">Home</a></li>
               {{-- <li><a href="#lists" class="hvr-grow">Join our List</a></li>
-              <li><a href="#reservations" class="hvr-grow">Reservations</a></li>
-              <li><a href="#events" class="hvr-grow">Special Events</a></li> --}}
-              <li><a href="#gallery" class="hvr-grow">Gallery</a></li>
-              <li><a href="#contact" class="hvr-grow">Contact</a></li>
+              <li><a href="#reservations" class="hvr-grow">Reservations</a></li> --}}
+              <li><a href="gallery" class="hvr-grow">Gallery</a></li>
+              <li><a href="reservation" class="hvr-grow">Reservation</a></li> 
+              <li><a href="contact" class="hvr-grow">Contact</a></li>
               <li><a href="menu" class="hvr-grow">Menu</a></li>
           </ul>
         {{-- </div> --}}

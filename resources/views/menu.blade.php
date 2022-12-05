@@ -2,11 +2,13 @@
 <html lang="en">
 @include('layouts.head')
 <body>
+  <header>
   @include('layouts.navbar')
   <img src="images/menu-bg.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;">
+  </header>
   <div class="container-fluid">
       <div class="menu-title">
-        <h2>Ichiraku's exquisite delicacy <span></span></h2>
+        <h2>Ichiraku's exquisite delicacy</h2>
       </div>
 
       <div class="menu-lists">
