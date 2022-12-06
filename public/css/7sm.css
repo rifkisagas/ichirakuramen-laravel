@@ -264,6 +264,17 @@ header:after{
 .menu-lists{
     position: absolute;
     /* line-height: 4rem; */
+    top: calc(22% - 2rem);
+    width: 100%;
+    text-align: center;
+    /* font-size: 5rem; */
+    font-weight: 600;
+    color: #FEEFEF;
+    font-family: westmount-light;
+}
+.menu-filters{
+    position: absolute;
+    /* line-height: 4rem; */
     top: calc(20% - 2rem);
     width: 100%;
     text-align: center;
@@ -271,6 +282,7 @@ header:after{
     font-weight: 600;
     color: #FEEFEF;
     font-family: westmount-light;
+    z-index: 86;
 }
 .hover {
     overflow: hidden;

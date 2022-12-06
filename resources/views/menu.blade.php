@@ -11,8 +11,8 @@
         <h2>Ichiraku's exquisite delicacy</h2>
       </div>
 
-      <div class="menu-lists">
-        <button class="btn btn-small btn-menu hvr-grow" data-toggle="portfilter" data-target="all">
+      <div class="menu-filters">
+        <button class="btn btn-small btn-menu hvr-grow" data-toggle="portfilter" data-target="all" style="z-index: 999">
           All
         </button>
         <button class="btn btn-small btn-menu hvr-grow" data-toggle="portfilter" data-target="ramen">
@@ -24,6 +24,8 @@
         <button class="btn btn-small btn-menu hvr-grow" data-toggle="portfilter" data-target="drink">
           Drink
         </button>
+      </div>
+      <div class="menu-lists">
         <div class="clearfix"></div>
         <div style="margin-bottom: 20px"></div>
         <br>
