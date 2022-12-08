@@ -261,6 +261,9 @@ header:after{
 }
 
 /* Menu */
+.remover{
+    color: #FEEFEF;
+}
 .menu-lists{
     position: absolute;
     /* line-height: 4rem; */
