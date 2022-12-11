@@ -123,7 +123,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button>
+            <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>
           </div>
         </div>
       </div>
@@ -142,8 +142,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button>
-          </div>
+            <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>          </div>
         </div>
       </div>
     </div>
@@ -161,8 +160,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button>
-          </div>
+            <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>          </div>
         </div>
       </div>
     </div>
@@ -180,8 +178,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button>
-          </div>
+            <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>          </div>
         </div>
       </div>
     </div>
@@ -199,8 +196,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button>
-          </div>
+            <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>          </div>
         </div>
       </div>
     </div>
@@ -218,8 +214,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button>
-          </div>
+            <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>          </div>
         </div>
       </div>
     </div>
@@ -237,8 +232,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button>
-          </div>
+            <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>          </div>
         </div>
       </div>
     </div>

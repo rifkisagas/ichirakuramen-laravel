@@ -170,18 +170,17 @@ header:after{
     opacity: 0;
 }
 
-/* Reservations */
-#reservations{
-    padding-top: 120px; 
-}
-.res-container{
-    padding-left: 60px;
-    padding-right: 60px;
-}
-.res-content{
-    position: relative;
-    font-style: westmount-light;
-    color: #000;
+/* order */
+.order-lists{
+    position: absolute;
+    /* line-height: 4rem; */
+    top: calc(35% - 2rem);
+    width: 100%;
+    text-align: center;
+    /* font-size: 5rem; */
+    font-weight: 600;
+    color: #FEEFEF;
+    font-family: westmount-light;
 }
 /* .content{
     float: right;
@@ -267,7 +266,7 @@ header:after{
 .menu-lists{
     position: absolute;
     /* line-height: 4rem; */
-    top: calc(22% - 2rem);
+    top: calc(28% - 2rem);
     width: 100%;
     text-align: center;
     /* font-size: 5rem; */
@@ -278,7 +277,7 @@ header:after{
 .menu-filters{
     position: absolute;
     /* line-height: 4rem; */
-    top: calc(20% - 2rem);
+    top: calc(25% - 2rem);
     width: 100%;
     text-align: center;
     /* font-size: 5rem; */
@@ -408,7 +407,7 @@ header:after{
 .menu-title{
     position: absolute;
     line-height: 4rem;
-    top: calc(14% - 2rem);
+    top: calc(18% - 2rem);
     width: 100%;
     text-align: center;
     font-size: 5rem;

@@ -33,6 +33,6 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/reservation', function () {
-    return view('reservation');
+Route::get('/order', function () {
+    return view('order');
 });

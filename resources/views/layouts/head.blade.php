@@ -7,4 +7,5 @@
     <link href="css/7sm.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/7sm.css')}}">
+    <link rel="stylesheet" href="{{asset('css/datepicker.css')}}">
 </head>
