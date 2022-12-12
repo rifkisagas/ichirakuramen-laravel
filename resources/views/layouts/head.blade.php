@@ -7,5 +7,14 @@
     <link href="css/7sm.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/7sm.css')}}">
-    <link rel="stylesheet" href="{{asset('css/datepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-datetimepicker.min.css')}}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/bootstrap-datepicker.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4db7374336.js" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.14/combined/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.14/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>

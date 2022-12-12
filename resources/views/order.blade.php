@@ -44,13 +44,106 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <div class='input-group date'>
-               <input type='text' value="02-16-2012" class="form-control" id="datepicker" />
-               <span class="input-group-addon">
-               <span class="glyphicon glyphicon-calendar"></span>
+            <div class='input-group'>
+              <label for="basic-url" class="form-label">Your Information</label>
+              <div class="input-group mb-3">
+                {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
+                <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+              </div>
+              
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
+                {{-- <span class="input-group-text" id="basic-addon2">@example.com</span> --}}
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">+62</span>
+                <input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon2">
+              </div>
+              
+              <label for="basic-url" class="form-label">Summary</label>
+              <div class="input-group mb-3">
+                <div class="form-control">
+                  <input type="text" placeholder="Date Reservation" class="date" id="basic-url" aria-describedby="basic-addon">
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                <input type="text" placeholder="Time Reservation" class="form-control" id="basic-url" aria-describedby="basic-addon">
+              </div>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+              </div>
+              
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+              </div>
+              
+              <div class="input-group">
+                <span class="input-group-text">With textarea</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+              </div>
                </span>
             </div>
          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="timemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content" style="background: #FEEFEF ">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Time Available (WIB)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053">16:00 - 16:30</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053">16:30 - 17:00</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053; height:2cm">17:00 - 17:30</button>
+              </div>
+            </div>
+            <div class="row" style="margin-top: 2cm">
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053">17:30 - 18:00</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053">18:30 - 19:00</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053; height:2cm">19:30 - 20:00</button>
+              </div>
+            </div>
+            <div class="row" style="margin-top: 2cm">
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053">20:00 - 20:30</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053">20:30 - 21:00</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary" style="background-color: #D75053; height:2cm">21:00 - 21:30</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -64,8 +157,9 @@
 @include('layouts.script')
 <script>
 AOS.init();
-$('#datepicker').datepicker({
-  format: 'mm-dd-yyyy'
+$('.date').datepicker({
+  forceParse: false
 });
 </script>
+
 </html>
