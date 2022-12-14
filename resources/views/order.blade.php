@@ -6,10 +6,10 @@
   @include('layouts.navbar')
   <img src="images/ramen-waiter.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;">
   </header>
-  <div class="order-lists">
+  <div class="order-lists" style="z-index: 25">
     <div class="container">
       <div class="row">
-        <div class="col-md-6" data-tag="ramen">
+        <div class="col-md-6" data-tag="ramen" data-aos="fade-down" data-aos-delay="1000">
           <a href="#" data-toggle="modal" data-target="#dine"> <div class="card hover hover-2 remover">
             <img src="images/dine-in.jpg" class="card-img-top" alt="..." style="opacity: 0.8">
             <div class="hover-overlay"></div>
@@ -19,7 +19,7 @@
             </div>
           </div></a>
         </div>
-        <div class="col-md-6" data-tag="ramen">
+        <div class="col-md-6" data-tag="ramen" data-aos="fade-up" data-aos-delay="1000">
           <a href="#" data-toggle="modal" data-target="#delivery"> <div class="card hover hover-2 remover">
             <img src="images/delivery.jpg" class="card-img-top" alt="..." style="opacity: 0.8">
             <div class="hover-overlay"></div>
@@ -34,7 +34,7 @@
   </div>
   {{-- Modal --}}
   <div class="modal fade" id="dine" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
       <div class="modal-content" style="background: #FEEFEF ">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Dine-in</h5>
@@ -43,46 +43,129 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <div class='input-group'>
-              <label for="basic-url" class="form-label">Your Information</label>
-              <div class="input-group mb-3">
-                {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
-                <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
-                <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
-              </div>
-              
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
-                {{-- <span class="input-group-text" id="basic-addon2">@example.com</span> --}}
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon2">+62</span>
-                <input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon2">
-              </div>
-              
-              <label for="basic-url" class="form-label">Summary</label>
-              <div class="input-group mb-3">
-                <div class="form-control">
-                  <input type="text" placeholder="Date Reservation" class="date" id="basic-url" aria-describedby="basic-addon">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class='input-group'>
+                    <label for="basic-url" class="form-label">Your Information</label>
+                    <div class="input-group mb-3">
+                      {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
+                      <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
+                      <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
+                      {{-- <span class="input-group-text" id="basic-addon2">@example.com</span> --}}
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon2">+62</span>
+                      <input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon2">
+                    </div>
+                    
+                    <label for="basic-url" class="form-label">Summary</label>
+                    <div class="input-group mb-3">
+                      <div class="form-control">
+                        <input type="text" placeholder="Date Reservation" class="date" id="basic-url" aria-describedby="basic-addon">
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                      <input type="text" placeholder="Time Reservation" class="form-control" id="timeinput" value="" aria-label="Disabled input example" aria-describedby="basic-addon" disabled>
+                    </div>
+                    
+                    <div class="input-group">
+                      <span class="input-group-text">Reservation Notes</span>
+                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="input-group mb-3">
-                <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                <input type="text" placeholder="Time Reservation" class="form-control" id="timeinput" value="" aria-label="Disabled input example" aria-describedby="basic-addon" disabled>
+              <div style="margin-top:20px"></div>
+              <div class="row">
+                <h5>Menu</h5>
+                <div class="col">
+                  <div class='input-group'>
+                    <div class="input-group mb-3">
+                      <select class="form-select" aria-label="Default select example">
+                        <option hidden>(Select Ramen Option)</option>
+                        <option value="1">Tonkotsu Ramen</option>
+                        <option value="2">Kamadare Ramen</option>
+                        <option value="3">Gokaku Ramen</option>
+                      </select>
+                    </div>
+                    <div class="input-group mb-3">
+                      <select class="form-select" aria-label="Default select example">
+                        <option hidden>(Select Drink)</option>
+                        <option value="1">Ocha</option>
+                      </select>
+                    </div>
+                    <div class="input-group mb-3">
+                      <select class="form-select" aria-label="Default select example">
+                        <option hidden>(Select Optional Dish)</option>
+                        <option value="1">Spicy Tuna Roll</option>
+                        <option value="2">Tempura Sushi</option>
+                        <option value="3">Chu-Toro</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                  <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
+                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                  <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
+                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                  <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
+                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                </div>
               </div>
-              
-              <div class="input-group">
-                <span class="input-group-text">Reservation Notes</span>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-              </div>
-               </span>
             </div>
-         </div>
+            <div class="col">ini menu</div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a>
+          {{-- <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a> --}}
+          <button type="button" class="btn btn-primary" style="background-color: #D75053" data-toggle="modal" data-target="#test">Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- modal menu --}}
+  <div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content" style="background: #FEEFEF ">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">INI MENU</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
+            <input type="text" class="form-control" placeholder="pil1" aria-label="First Name" aria-describedby="basic-addon1">
+            <span class="input-group-text">+</span>
+          </div>
+          <div class="input-group mb-3">
+            {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
+            <input type="text" class="form-control" placeholder="pil2" aria-label="First Name" aria-describedby="basic-addon1">
+            <span class="input-group-text">+</span>
+          </div>
+          <div class="input-group mb-3">
+            {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
+            <input type="text" class="form-control" placeholder="pil3" aria-label="First Name" aria-describedby="basic-addon1">
+            <span class="input-group-text">+</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          {{-- <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a> --}}
+          <button type="button" class="btn btn-primary" style="background-color: #D75053" data-toggle="modal" data-target="#test">Order</button>
         </div>
       </div>
     </div>
@@ -142,7 +225,7 @@
   </div>
 </body>
 @include('layouts.foot')
-@include('layouts.script')
+@include('layouts.script')  
 <script>
 AOS.init();
 $('.date').datepicker({

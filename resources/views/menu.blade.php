@@ -6,12 +6,12 @@
   @include('layouts.navbar')
   <img src="images/menu-bg.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;">
   </header>
-  <div class="container-fluid">
-      <div class="menu-title">
-        <h2>Ichiraku's exquisite delicacy</h2>
+  <div class="container-fluid" >
+      <div class="menu-title" data-aos="fade-down" data-aos-delay="1000" data-aos-duration="800">
+        <h2 >Ichiraku's exquisite delicacy</h2>
       </div>
 
-      <div class="menu-filters">
+      <div class="menu-filters" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="1000">
         <button class="btn btn-small btn-menu hvr-grow" data-toggle="portfilter" data-target="all" style="z-index: 999">
           All
         </button>
@@ -25,14 +25,14 @@
           Drink
         </button>
       </div>
-      <div class="menu-lists">
+      <div class="menu-lists" style="z-index: 25">
         <div class="clearfix"></div>
         <div style="margin-bottom: 20px"></div>
         <br>
 
         <div class="container">
           <div class="row">
-            <div class="col-md-4" data-tag="ramen">
+            <div class="col-md-4" data-tag="ramen" data-aos="fade-down" data-aos-delay="2000">
               <a href="#" data-toggle="modal" data-target="#tonkotsu"> <div class="card hover hover-2 remover">
                 <img src="images/tonkotsuramen.png" class="card-img-top" alt="...">
                 <div class="hover-overlay"></div>
@@ -42,7 +42,7 @@
                 </div>
               </div></a>
             </div>
-            <div class="col-md-4" data-tag="ramen">
+            <div class="col-md-4" data-tag="ramen" data-aos="fade-down" data-aos-delay="2000">
               <a href="#" data-toggle="modal" data-target="#kamadare"> <div class="card hover hover-2 remover">
                 <img src="images/kamadareramen.png" class="card-img-top" alt="...">
                 <div class="hover-overlay"></div>
@@ -52,7 +52,7 @@
                 </div>
               </div></a>
             </div>
-            <div class="col-md-4" data-tag="ramen">
+            <div class="col-md-4" data-tag="ramen" data-aos="fade-down" data-aos-delay="2000">
               <a href="#" data-toggle="modal" data-target="#gokaku"> <div class="card hover hover-2 remover">
                 <img src="images/gokakuramen.png" class="card-img-top" alt="...">
                 <div class="hover-overlay"></div>
@@ -65,7 +65,7 @@
           </div>
           <div class="row">
             <div style="margin-top: 60px"></div>
-            <div class="col-md-3" data-tag="sushi">
+            <div class="col-md-3" data-tag="sushi" data-aos="fade-up" data-aos-delay="2500">
               <a href="#" data-toggle="modal" data-target="#spicytuna"> <div class="card hover hover-2 remover">
                 <img src="images/spicytuna.jpg" class="card-img-top" alt="...">
                 <div class="hover-overlay"></div>
@@ -75,7 +75,7 @@
                 </div>
               </div></a>
             </div>
-            <div class="col-md-3" data-tag="sushi">
+            <div class="col-md-3" data-tag="sushi" data-aos="fade-up" data-aos-delay="2500">
               <a href="#" data-toggle="modal" data-target="#shrimptempura"> <div class="card hover hover-2 remover">
                 <img src="images/shrimptempura.jpg" class="card-img-top" alt="...">
                 <div class="hover-overlay"></div>
@@ -85,7 +85,7 @@
                 </div>
               </div></a>
             </div>
-            <div class="col-md-3" data-tag="sushi">
+            <div class="col-md-3" data-tag="sushi" data-aos="fade-up" data-aos-delay="2500">
               <a href="#" data-toggle="modal" data-target="#chutoro"> <div class="card hover hover-2 remover">
                 <img src="images/chutoro.jpg" class="card-img-top" alt="...">
                 <div class="hover-overlay"></div>
@@ -95,7 +95,7 @@
                 </div>
               </div></a>
             </div>
-            <div class="col-md-3" data-tag="drink">
+            <div class="col-md-3" data-tag="drink" data-aos="fade-up" data-aos-delay="2500">
               <a href="#" data-toggle="modal" data-target="#ocha"> <div class="card hover hover-2 remover">
                 <img src="images/ocha.jpg" class="card-img-top" alt="...">
                 <div class="hover-overlay"></div>
@@ -241,7 +241,6 @@
 @include('layouts.foot')
 @include('layouts.script')
 <script>
-AOS.init();
 function show() {
  
  /* Access image by id and change
@@ -252,5 +251,6 @@ function show() {
  document.getElementById('btnID')
          .style.display = "none";
 }
+AOS.init();
 </script>
 </html>
