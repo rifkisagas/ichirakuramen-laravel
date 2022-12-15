@@ -170,7 +170,23 @@ header:after{
     opacity: 0;
 }
 
+/* gallery */
+.gallery-bg{
+    background: url(../images/ramen-shop.jpg) no-repeat center;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* order */
+.order-bg{
+    background: url(../images/ramen-waiter.jpg) no-repeat center;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .order-lists{
     position: absolute;
     /* line-height: 4rem; */
@@ -192,6 +208,16 @@ header:after{
     width: 300px;
     border: 15px solid green;
 } */
+
+/* contact */
+.contact-bg{
+    background: url(../images/ramen-company.jpg) no-repeat ;
+    height: 100%;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* about */
 .white-box { 
     width: auto; height: auto; margin-top: 50px;   
@@ -265,6 +291,13 @@ header:after{
 }
 
 /* Menu */
+.menu-bg{
+    background: url(../images/menu-bg.jpg) no-repeat center;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .remover{
     color: #FEEFEF;
 }
@@ -408,6 +441,18 @@ header:after{
     background-color: #D75053;
     border-color: #D75053;
     color: #FEEFEF;
+}
+.btn-menu-order,
+.btn-menu-order:hover,
+.btn-menu-order:active,
+.btn-menu-order:visited,
+.btn-menu-order:focus {
+    background-color: #D75053;
+    border-color: #D75053;
+    color: #FEEFEF;
+    width: 80px;
+    margin-right: 12px;
+    margin-bottom: 20px
 }
 .menu-title{
     position: absolute;

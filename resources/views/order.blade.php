@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.head')
-<body>
+<body class="img-fluid order-bg">
   <header>
   @include('layouts.navbar')
-  <img src="images/ramen-waiter.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;">
+  {{-- <img src="images/ramen-waiter.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;"> --}}
   </header>
   <div class="order-lists" style="z-index: 25">
     <div class="container">
@@ -84,34 +84,37 @@
               </div>
               <div style="margin-top:20px"></div>
               <div class="row">
-                <h5>Menu</h5>
+                <h5>Menu Selection</h5>
                 <div class="col">
                   <div class='input-group'>
                     <div class="input-group mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="ramen-input">
                         <option hidden>(Select Ramen Option)</option>
                         <option value="1">Tonkotsu Ramen</option>
                         <option value="2">Kamadare Ramen</option>
                         <option value="3">Gokaku Ramen</option>
                       </select>
+                      <input type="number" step="1" max="10" min="0" value="1" name="quantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end">
                     </div>
                     <div class="input-group mb-3">
-                      <select class="form-select" aria-label="Default select example">
-                        <option hidden>(Select Drink)</option>
-                        <option value="1">Ocha</option>
-                      </select>
-                    </div>
-                    <div class="input-group mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="optionaldish-input">
                         <option hidden>(Select Optional Dish)</option>
                         <option value="1">Spicy Tuna Roll</option>
                         <option value="2">Tempura Sushi</option>
                         <option value="3">Chu-Toro</option>
                       </select>
+                      <input id="qty" type="number" step="1" max="10" min="0" value="1" name="quantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end">
+                    </div>
+                    <div class="input-group mb-3">
+                      <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="drink-input">
+                        <option hidden>(Select Drink)</option>
+                        <option value="1">Ocha</option>
+                      </select>
+                      <input type="number" step="1" max="10" min="0" value="1" name="quantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end">
                     </div>
                   </div>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                   <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
                   <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
                   <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
@@ -121,10 +124,100 @@
                   <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
                   <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
                   <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                </div> --}}
+              </div>
+            </div>
+            <div class="col">
+              <div class="container">
+                {{-- <div class="d-flex justify-content-center">Test</div> --}}
+                <div class="menu-filters-order d-flex-row">
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="all" style="z-index: 999">
+                    All
+                  </button>
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="ramen">
+                    Ramen
+                  </button>
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="sushi">
+                    Sushi
+                  </button>
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="drink">
+                    Drink
+                  </button>
+                </div>
+                <div class="row">
+                  <div class="col-md-5" style="margin-bottom:20px" data-tag="ramen">
+                    <div class="card hover hover-2 remover menu-choose-ramen" value="1" type="button">
+                      <img src="images/tonkotsuramen.png" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light"></span>Tonkotsu</h3>
+                        <p class="hover-2-description font-weight-light mb-0">Made with Pork-bone soup skimmed to perfection</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5" style="margin-bottom:20px" data-tag="ramen">
+                    <div class="card hover hover-2 remover menu-choose-ramen" value="2" type="button">
+                      <img src="images/kamadareramen.png" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Kamadare </span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">Served with The special "umami" inside the secret broth</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5" style="margin-bottom:20px" data-tag="ramen">
+                    <div class="card hover hover-2 remover menu-choose-ramen" value="3" type="button">
+                      <img src="images/gokakuramen.png" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Gokaku </span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">"Gokaku" is Japanese for "passing an exam"</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5" style="margin-bottom:20px" data-tag="sushi" >
+                    <div class="card hover hover-2 remover menu-choose-optionaldish" value="1" type="button">
+                      <img src="images/spicytuna.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">spicy </span> tuna roll</h3>
+                        <p class="hover-2-description font-weight-light mb-0">Raw tuna with Ichimi togarashi</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5" style="margin-bottom:20px" data-tag="sushi" >
+                    <div class="card hover hover-2 remover menu-choose-optionaldish" value="2" type="button">
+                      <img src="images/shrimptempura.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Tempura </span> Sushi</h3>
+                        <p class="hover-2-description font-weight-light mb-0">Lightly battered and crispy coating</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5" style="margin-bottom:20px" data-tag="sushi" >
+                    <div class="card hover hover-2 remover menu-choose-optionaldish" value="3" type="button">
+                      <img src="images/chutoro.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Chu-toro</span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">flavor of akami with sweet tenderness of an o-toro</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5" style="margin-bottom:20px" data-tag="drink" >
+                     <div class="card hover hover-2 remover menu-choose-drink" value="1" type="button">
+                      <img src="images/ocha.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Ocha </span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">Made with the bancha tea leaves from kyoto</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col">ini menu</div>
           </div>
         </div>
         <div class="modal-footer">
@@ -238,6 +331,59 @@ $(".btn-time").click(function(){
     $("#timeinput").val($(this).val());
 });
 
+// $(".menu-choose-ramen").click(function(){
+//     console.log($(this).val());
+//     $("menu-input").val($(this).val());
+// });
+
+$(".menu-choose-ramen").click(function () {
+    $('#ramen-input').val($(this).attr('value'))
+});
+
+$(".menu-choose-drink").click(function () {
+    $('#drink-input').val($(this).attr('value'))
+});
+
+$(".menu-choose-optionaldish").click(function () {
+    $('#optionaldish-input').val($(this).attr('value'))
+});
+
+function incrementValue(e) {
+  e.preventDefault();
+  var fieldName = $(e.target).data('field');
+  var parent = $(e.target).closest('div');
+  var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+  if (!isNaN(currentVal)) {
+      // currentVal = currentVal-1;
+      parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+      console.log(currentVal);
+  } else {
+      parent.find('input[name=' + fieldName + ']').val(0);
+  }
+}
+
+function decrementValue(e) {
+  e.preventDefault();
+  var fieldName = $(e.target).data('field');
+  var parent = $(e.target).closest('div');
+  var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+  if (!isNaN(currentVal) && currentVal > 0) {
+      parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+      console.log(currentVal);
+  } else {
+      parent.find('input[name=' + fieldName + ']').val(0);
+  }
+}
+
+$('#qty').on('click', '.button-plus', function(e) {
+    incrementValue(e);
+});
+
+$('#qty').on('click', '.button-minus', function(e) {
+    decrementValue(e);
+});
 
 </script>
 

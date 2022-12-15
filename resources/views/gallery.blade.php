@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.head')
-<body>
+<body class="img-fluid gallery-bg">
   <header>
   @include('layouts.navbar')
-  <img src="images/ramen-shop.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;">
+  {{-- <img src="images/ramen-shop.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;"> --}}
   </header>
 </body>
 @include('layouts.foot')

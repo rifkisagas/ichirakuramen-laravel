@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.head')
-<body>
+<body class="img-fluid menu-bg">
   <header>
   @include('layouts.navbar')
-  <img src="images/menu-bg.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;">
+  {{-- <img src="images/menu-bg.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;"> --}}
   </header>
   <div class="container-fluid" >
       <div class="menu-title" data-aos="fade-down" data-aos-delay="1000" data-aos-duration="800">
