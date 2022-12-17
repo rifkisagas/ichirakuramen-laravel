@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservation', function (Blueprint $table) {
-            $table->id();
-            // $table->bigInteger('reservation_id')->nullable()->default(12);
+        Schema::create('reservations', function (Blueprint $table) {
+            // $table->();
+            $table->bigInteger('reservation_id') -> primary();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
@@ -23,9 +23,10 @@ return new class extends Migration
             $table->date('datereservation');
             $table->string('timerange');
             $table->string('reservationnotes');
-            $table->string('ramen');
-            $table->string('drink');
-            $table->string('sushi');
+            $table->bigInteger('menu_id');
+            $table->timestamps();
+
+            $table->foreign('menu_id')->references('menu_id')->on('menus');
         });
     }
 
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservation');
+        Schema::dropIfExists('reservations');
     }
 };

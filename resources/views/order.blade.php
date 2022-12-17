@@ -43,7 +43,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="" >
+          <form class="needs-validation" method="post" novalidate>
           <div class="row">
             <div class="col-md-5">
               <div class="row">
@@ -52,32 +52,32 @@
                     <label for="basic-url" class="form-label">Your Information</label>
                     <div class="input-group mb-3">
                       {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
-                      <input type="text" name="firstname" class="form-control " placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required>
-                      <input type="text" name="lastname" class="form-control is-invalid" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required>
-                      {{-- <div class="invalid-feedback">
-                        Valid name required!
-                      </div> --}}
-                      <div class="valid-feedback">Looks good!</div>
+                      <input type="text" id="firstname" name="firstname" class="form-control " placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required>
+                      <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required>
+                      <div class="invalid-feedback">Valid name required for valid orders.</div>
                     </div>
                     
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2" required>
-                      {{-- <span class="input-group-text" id="basic-addon2">@example.com</span> --}}
+                      <input type="email" class="form-control" id="email" placeholder="Email Address (user@mail.com)" aria-label="Email Address" aria-describedby="basic-addon2" required>
+                      <div class="invalid-feedback">Valid email address required for valid orders.</div>
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon2">+62</span>
-                      <input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon2" required>
+                      <input type="text" class="form-control" placeholder="Phone Number (81234567891)" aria-label="Phone Number" aria-describedby="basic-addon2" required>
+                      <div class="invalid-feedback">Valid phone number required for valid orders.</div>
                     </div>
                     
                     <label for="basic-url" class="form-label">Summary</label>
                     <div class="input-group mb-3">
                       <div class="form-control">
-                        <input type="text" placeholder="Date Reservation" class="date" id="basic-url" aria-describedby="basic-addon" required>
+                        <input type="text" placeholder="Date Reservation (YYYY/MM/DD)" class="date" id="basic-url" aria-describedby="basic-addon" required>
                       </div>
+                      <div class="invalid-feedback">Please input the specific date.</div>
                     </div>
                     <div class="input-group mb-3">
                       <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
                       <input type="text" placeholder="Time Reservation" class="form-control" id="timeinput" value="" aria-label="Disabled input example" aria-describedby="basic-addon" required disabled>
+                      <div class="invalid-feedback">Please choose the time reservation.</div>
                     </div>
                     
                     <div class="input-group">
@@ -91,20 +91,27 @@
               <div class="row">
                 <h5>Menu Selection</h5>
                 <div class="col">
-                  <div class='input-group'>
-                    <div class="input-group mb-3">
+                  <button type="button" class="btn btn-primary" style="background-color: #D75053" id="btn-create">Order</button>
+                  <div style="margin-bottom: 12px"></div>
+                  <div class='input-group' id="adddropdown">
+                    
+                    {{-- IMPORTANT --}}
+                    {{-- <div class="input-group mb-3">
                       <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="ramen-input" required>
-                        {{-- <option hidden>(Select Ramen Option)</option> --}}
                         <option></option>
                         <option value="1">Tonkotsu Ramen</option>
                         <option value="2">Kamadare Ramen</option>
                         <option value="3">Gokaku Ramen</option>
+                        <option value="4">Spicy Tuna</option>
+                        <option value="5">Ocha</option>
                       </select>
                       <input type="number" step="1" max="10" min="0" value="1" name="ramenquantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>
-                    </div>
-                    <div class="input-group mb-3">
+                      <div class="invalid-feedback">.</div>
+                    </div> --}}
+                    {{-- FINISH IMPORTANT --}}
+
+                    {{-- <div class="input-group mb-3">
                       <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="optionaldish-input" required>
-                        {{-- <option hidden>(Select Optional Dish)</option> --}}
                         <option></option>
                         <option value="1">Spicy Tuna Roll</option>
                         <option value="2">Tempura Sushi</option>
@@ -114,12 +121,11 @@
                     </div>
                     <div class="input-group mb-3">
                       <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="drink-input" required>
-                        {{-- <option hidden>(Select Drink)</option> --}}
                         <option></option>
                         <option value="1">Ocha</option>
                       </select>
                       <input type="number" step="1" max="10" min="0" value="1" name="drinkquantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
                 {{-- <div class="col">
@@ -155,7 +161,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="ramen">
-                    <div class="card hover hover-2 remover menu-choose-ramen" value="1" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="1" type="button">
                       <img src="images/tonkotsuramen.png" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -165,7 +171,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="ramen">
-                    <div class="card hover hover-2 remover menu-choose-ramen" value="2" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="2" type="button">
                       <img src="images/kamadareramen.png" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -175,7 +181,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="ramen">
-                    <div class="card hover hover-2 remover menu-choose-ramen" value="3" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="3" type="button">
                       <img src="images/gokakuramen.png" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -185,7 +191,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
-                    <div class="card hover hover-2 remover menu-choose-optionaldish" value="1" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="4" type="button">
                       <img src="images/spicytuna.jpg" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -195,7 +201,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
-                    <div class="card hover hover-2 remover menu-choose-optionaldish" value="2" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="2" type="button">
                       <img src="images/shrimptempura.jpg" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -205,7 +211,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
-                    <div class="card hover hover-2 remover menu-choose-optionaldish" value="3" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="3" type="button">
                       <img src="images/chutoro.jpg" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -215,7 +221,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="drink" >
-                     <div class="card hover hover-2 remover menu-choose-drink" value="1" type="button">
+                     <div class="card hover hover-2 remover menu-choose" value="5" type="button">
                       <img src="images/ocha.jpg" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -347,17 +353,17 @@ $(".btn-time").click(function(){
 //     $("menu-input").val($(this).val());
 // });
 
-$(".menu-choose-ramen").click(function () {
-    $('#ramen-input').val($(this).attr('value'))
+$(".menu-choose").click(function () {
+    $('#menu-' +uniqId).val($(this).attr('value'))
 });  
 
-$(".menu-choose-drink").click(function () {
-    $('#drink-input').val($(this).attr('value'))
-});
+// $(".menu-choose-drink").click(function () {
+//     $('#drink-input').val($(this).attr('value'))
+// });
 
-$(".menu-choose-optionaldish").click(function () {
-    $('#optionaldish-input').val($(this).attr('value'))
-});
+// $(".menu-choose-optionaldish").click(function () {
+//     $('#optionaldish-input').val($(this).attr('value'))
+// });
 
 function incrementValue(e) {
   e.preventDefault();
@@ -396,6 +402,31 @@ $('#qty').on('click', '.button-minus', function(e) {
     decrementValue(e);
 });
 
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+          }, false);
+      });
+  }, false);
+})();
+
+var uniqId = 0;
+$('#btn-create').click(function(){
+  uniqId++;
+  console.log("menu-" + uniqId);
+  $('#adddropdown').append('<div class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Ocha</option>                      </select>                      <input type="number" step="1" max="10" min="0" value="1" name="ramenquantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">.</div></div>');
+});
 
 
 </script>
