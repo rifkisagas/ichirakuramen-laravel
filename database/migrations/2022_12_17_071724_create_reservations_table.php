@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             // $table->();
-            $table->bigInteger('reservation_id') -> primary();
+            $table->bigInteger('reservation_id') -> autoIncrement();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
             $table->string('phonenumber');
             $table->date('datereservation');
             $table->string('timerange');
-            $table->string('reservationnotes');
-            $table->bigInteger('menu_id');
+            $table->string('reservationnotes') -> nullable();
+            // $table->bigInteger('menu_id');
             $table->timestamps();
 
-            $table->foreign('menu_id')->references('menu_id')->on('menus');
+            // $table->foreign('menu_id')->references('menu_id')->on('menus');
         });
     }
 

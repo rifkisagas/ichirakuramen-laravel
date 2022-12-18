@@ -32,7 +32,9 @@
       </div>
     </div>
   </div>
-  {{-- Modal --}}
+
+  {{-- Modal dine--}}
+
   <div class="modal fade" id="dine" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
       <div class="modal-content" style="background: #FEEFEF ">
@@ -43,7 +45,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="needs-validation" method="post" novalidate>
+          <form action="{{url('api/reservation')}}" class="needs-validation" method="POST" novalidate>
+            {{ csrf_field() }}
           <div class="row">
             <div class="col-md-5">
               <div class="row">
@@ -51,38 +54,37 @@
                   <div class='input-group'>
                     <label for="basic-url" class="form-label">Your Information</label>
                     <div class="input-group mb-3">
-                      {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
                       <input type="text" id="firstname" name="firstname" class="form-control " placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required>
                       <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required>
                       <div class="invalid-feedback">Valid name required for valid orders.</div>
                     </div>
                     
                     <div class="input-group mb-3">
-                      <input type="email" class="form-control" id="email" placeholder="Email Address (user@mail.com)" aria-label="Email Address" aria-describedby="basic-addon2" required>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Email Address (user@mail.com)" aria-label="Email Address" aria-describedby="basic-addon2" required>
                       <div class="invalid-feedback">Valid email address required for valid orders.</div>
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon2">+62</span>
-                      <input type="text" class="form-control" placeholder="Phone Number (81234567891)" aria-label="Phone Number" aria-describedby="basic-addon2" required>
+                      <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone Number (81234567891)" aria-label="Phone Number" aria-describedby="basic-addon2" required>
                       <div class="invalid-feedback">Valid phone number required for valid orders.</div>
                     </div>
                     
                     <label for="basic-url" class="form-label">Summary</label>
                     <div class="input-group mb-3">
                       <div class="form-control">
-                        <input type="text" placeholder="Date Reservation (YYYY/MM/DD)" class="date" id="basic-url" aria-describedby="basic-addon" required>
+                        <input type="text" placeholder="Date Reservation (YYYY/MM/DD)" id="datereservation" name="datereservation" class="date" aria-describedby="basic-addon" required>
                       </div>
                       <div class="invalid-feedback">Please input the specific date.</div>
                     </div>
                     <div class="input-group mb-3">
                       <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                      <input type="text" placeholder="Time Reservation" class="form-control" id="timeinput" value="" aria-label="Disabled input example" aria-describedby="basic-addon" required disabled>
+                      <input type="text" placeholder="Time Reservation" class="form-control" id="timerange" name="timerange" aria-label="Disabled input example" aria-describedby="basic-addon" required>
                       <div class="invalid-feedback">Please choose the time reservation.</div>
                     </div>
                     
                     <div class="input-group">
                       <span class="input-group-text">Reservation Notes</span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea class="form-control" id="reservationnotes" name="reservationnotes" aria-label="With textarea"></textarea>
                     </div>
                   </div>
                 </div>
@@ -91,60 +93,17 @@
               <div class="row">
                 <h5>Menu Selection</h5>
                 <div class="col">
-                  <button type="button" class="btn btn-primary" style="background-color: #D75053" id="btn-create">Order</button>
+                  <button type="button" class="btn btn-primary" style="background-color: #D75053" id="btn-create">Add Order</button>
+                  <button type="button" class="btn btn-primary" style="background-color: #D75053" id="btn-reset">Reset</button>
                   <div style="margin-bottom: 12px"></div>
                   <div class='input-group' id="adddropdown">
-                    
-                    {{-- IMPORTANT --}}
-                    {{-- <div class="input-group mb-3">
-                      <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="ramen-input" required>
-                        <option></option>
-                        <option value="1">Tonkotsu Ramen</option>
-                        <option value="2">Kamadare Ramen</option>
-                        <option value="3">Gokaku Ramen</option>
-                        <option value="4">Spicy Tuna</option>
-                        <option value="5">Ocha</option>
-                      </select>
-                      <input type="number" step="1" max="10" min="0" value="1" name="ramenquantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>
-                      <div class="invalid-feedback">.</div>
-                    </div> --}}
-                    {{-- FINISH IMPORTANT --}}
-
-                    {{-- <div class="input-group mb-3">
-                      <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="optionaldish-input" required>
-                        <option></option>
-                        <option value="1">Spicy Tuna Roll</option>
-                        <option value="2">Tempura Sushi</option>
-                        <option value="3">Chu-Toro</option>
-                      </select>
-                      <input id="qty" type="number" step="1" max="10" min="0" value="1" name="optionaldishquantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>
-                    </div>
-                    <div class="input-group mb-3">
-                      <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="drink-input" required>
-                        <option></option>
-                        <option value="1">Ocha</option>
-                      </select>
-                      <input type="number" step="1" max="10" min="0" value="1" name="drinkquantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>
-                    </div> --}}
+                    {{-- add order reset order --}}
                   </div>
                 </div>
-                {{-- <div class="col">
-                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                  <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
-                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                  <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
-                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                  <span type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10"></span>
-                  <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
-                </div> --}}
               </div>
-              {{-- <div class="d-flex justify-content-center" style="margin-top: 20px"><h1>TEST</h1></div> --}}
             </div>
             <div class="col">
               <div class="container">
-                {{-- <div class="d-flex justify-content-center">Test</div> --}}
                 <div class="menu-filters-order d-flex-row">
                   <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="all" style="z-index: 999">
                     All
@@ -239,13 +198,15 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           {{-- <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a> --}}
           {{-- <button type="button" class="btn btn-primary" style="background-color: #D75053" data-toggle="modal" data-target="#test">Print</button> --}}
-          <button type="submit" class="btn btn-primary" style="background-color: #D75053" data-toggle="modal" data-target="#test">Order</button>
+          <button type="submit" class="btn btn-primary" style="background-color: #D75053">Order</button>
         </div>
-      </form>
+        </form>
       </div>
     </div>
   </div>
+
   {{-- modal menu --}}
+
   <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content" style="background: #FEEFEF ">
@@ -345,7 +306,7 @@ $('.date').datepicker({
 
 $(".btn-time").click(function(){
     console.log($(this).val());
-    $("#timeinput").val($(this).val());
+    $("#timerange").val($(this).val());
 });
 
 // $(".menu-choose-ramen").click(function(){
@@ -422,10 +383,29 @@ $('#qty').on('click', '.button-minus', function(e) {
 })();
 
 var uniqId = 0;
+if(uniqId==0){
+  uniqId++;
+  console.log(uniqId);
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id" id="menu-'+ uniqId +'"><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end">                      <div class="invalid-feedback">.</div></div>');
+}
+
+
 $('#btn-create').click(function(){
   uniqId++;
-  console.log("menu-" + uniqId);
-  $('#adddropdown').append('<div class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Ocha</option>                      </select>                      <input type="number" step="1" max="10" min="0" value="1" name="ramenquantity" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">.</div></div>');
+  console.log(uniqId);
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id" id="menu-'+ uniqId +'"><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end">                      <div class="invalid-feedback">.</div></div>');
+});
+
+$('#btn-reset').click(function(){
+  while(uniqId!=0){
+    if(uniqId > 0){
+      $('#menu-'+uniqId).remove();
+      $('#menuqty-'+uniqId).remove();
+      $('#parrentmenu-'+uniqId).remove();
+      uniqId--;
+    }
+    console.log(uniqId);
+  }
 });
 
 
