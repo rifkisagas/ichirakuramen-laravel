@@ -76,6 +76,7 @@
                       </div>
                       <div class="invalid-feedback">Please input the specific date.</div>
                     </div>
+                    <div id="error-date"></div>
                     <div class="input-group mb-3">
                       <button data-toggle="modal" data-target="#timemodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
                       <input type="text" placeholder="Time Reservation" class="form-control" id="timerange" name="timerange" aria-label="Disabled input example" aria-describedby="basic-addon" required>
@@ -160,7 +161,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
-                    <div class="card hover hover-2 remover menu-choose" value="2" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="5" type="button">
                       <img src="images/shrimptempura.jpg" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -170,7 +171,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
-                    <div class="card hover hover-2 remover menu-choose" value="3" type="button">
+                    <div class="card hover hover-2 remover menu-choose" value="6" type="button">
                       <img src="images/chutoro.jpg" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -180,7 +181,7 @@
                     </div>
                   </div>
                   <div class="col-md-4" style="margin-bottom:20px" data-tag="drink" >
-                     <div class="card hover hover-2 remover menu-choose" value="5" type="button">
+                     <div class="card hover hover-2 remover menu-choose" value="7" type="button">
                       <img src="images/ocha.jpg" class="card-img-top" alt="...">
                       <div class="hover-overlay"></div>
                       <div class="hover-2-content">
@@ -198,7 +199,9 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           {{-- <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a> --}}
           {{-- <button type="button" class="btn btn-primary" style="background-color: #D75053" data-toggle="modal" data-target="#test">Print</button> --}}
-          <button type="submit" class="btn btn-primary" style="background-color: #D75053">Order</button>
+          <input type="hidden" placeholder="Time Reservation" class="form-control" id="uniqId" name="uniqId" aria-label="Disabled input example" aria-describedby="basic-addon"/>
+                      
+          <button type="submit" id="btn-submit" class="btn btn-primary" style="background-color: #D75053">Order</button>
         </div>
         </form>
       </div>
@@ -309,22 +312,9 @@ $(".btn-time").click(function(){
     $("#timerange").val($(this).val());
 });
 
-// $(".menu-choose-ramen").click(function(){
-//     console.log($(this).val());
-//     $("menu-input").val($(this).val());
-// });
-
 $(".menu-choose").click(function () {
     $('#menu-' +uniqId).val($(this).attr('value'))
 });  
-
-// $(".menu-choose-drink").click(function () {
-//     $('#drink-input').val($(this).attr('value'))
-// });
-
-// $(".menu-choose-optionaldish").click(function () {
-//     $('#optionaldish-input').val($(this).attr('value'))
-// });
 
 function incrementValue(e) {
   e.preventDefault();
@@ -386,14 +376,16 @@ var uniqId = 0;
 if(uniqId==0){
   uniqId++;
   console.log(uniqId);
-  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id" id="menu-'+ uniqId +'"><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end">                      <div class="invalid-feedback">.</div></div>');
+  $('#uniqId').val(uniqId);
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
 }
-
 
 $('#btn-create').click(function(){
   uniqId++;
   console.log(uniqId);
-  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id" id="menu-'+ uniqId +'"><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end">                      <div class="invalid-feedback">.</div></div>');
+  
+  $('#uniqId').val(uniqId);
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
 });
 
 $('#btn-reset').click(function(){
@@ -408,6 +400,16 @@ $('#btn-reset').click(function(){
   }
 });
 
+// const d = new
+
+$('#btn-submit').click(function(){
+  if('.datereservation' != Date()){
+    // $('#errordate').append('<div class="date-error">Please input the specific date.</div>')
+    // console.log('hai ini error');
+    alert('Please input the specific date.');
+    document.getElementById("datereservation").focus();
+  }
+})
 
 </script>
 
