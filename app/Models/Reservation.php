@@ -12,4 +12,12 @@ class Reservation extends Model
 
     public $fillable = ['reservation_id' , 'firstname', 'lastname', 'email', 'phonenumber',
                         'datereservation', 'timerange', 'reservationnotes'];
+
+    public function index(){
+        $reservations = Reservation::latest()->paginate(5); 
+    }
+
+    // public function konsultan(){
+    //     return $this->belongsTo(DaftarKonsultan::class,'konsultan_id','id');   
+    // }
 }

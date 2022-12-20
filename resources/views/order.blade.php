@@ -4,7 +4,6 @@
 <body class="img-fluid order-bg">
   <header>
   @include('layouts.navbar')
-  {{-- <img src="images/ramen-waiter.jpg" class="img-fluid" alt="Responsive image" style="opacity: 0.5;"> --}}
   </header>
   <div class="order-lists" style="z-index: 25">
     <div class="container">
@@ -45,7 +44,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="{{url('api/reservation')}}" class="needs-validation" method="POST" novalidate>
+          <form name="myForm" action="{{url('api/reservation')}}" class="needs-validation" method="POST" novalidate>
             {{ csrf_field() }}
           <div class="row">
             <div class="col-md-5">
@@ -54,7 +53,7 @@
                   <div class='input-group'>
                     <label for="basic-url" class="form-label">Your Information</label>
                     <div class="input-group mb-3">
-                      <input type="text" id="firstname" name="firstname" class="form-control " placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required>
+                      <input type="text" id="firstname" name="firstname" class="form-control checker" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required>
                       <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required>
                       <div class="invalid-feedback">Valid name required for valid orders.</div>
                     </div>
@@ -197,53 +196,15 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          {{-- <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a> --}}
-          {{-- <button type="button" class="btn btn-primary" style="background-color: #D75053" data-toggle="modal" data-target="#test">Print</button> --}}
-          <input type="hidden" placeholder="Time Reservation" class="form-control" id="uniqId" name="uniqId" aria-label="Disabled input example" aria-describedby="basic-addon"/>
-                      
-          <button type="submit" id="btn-submit" class="btn btn-primary" style="background-color: #D75053">Order</button>
+          <input type="hidden" placeholder="Time Reservation" class="form-control" id="uniqId" name="uniqId" aria-label="Disabled input example" aria-describedby="basic-addon"/>            
+          <button type="submit" id="btn-submit" class="btn btn-danger" style="background-color: #D75053">Order</button>
         </div>
         </form>
       </div>
     </div>
   </div>
 
-  {{-- modal menu --}}
-
-  <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content" style="background: #FEEFEF ">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">INI MENU</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="input-group mb-3">
-            {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
-            <input type="text" class="form-control" placeholder="pil1" aria-label="First Name" aria-describedby="basic-addon1">
-            <span class="input-group-text">+</span>
-          </div>
-          <div class="input-group mb-3">
-            {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
-            <input type="text" class="form-control" placeholder="pil2" aria-label="First Name" aria-describedby="basic-addon1">
-            <span class="input-group-text">+</span>
-          </div>
-          <div class="input-group mb-3">
-            {{-- <span class="input-group-text" id="basic-addon1">@</span> --}}
-            <input type="text" class="form-control" placeholder="pil3" aria-label="First Name" aria-describedby="basic-addon1">
-            <span class="input-group-text">+</span>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          {{-- <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a> --}}
-          <button type="button" class="btn btn-primary" style="background-color: #D75053" data-toggle="modal" data-target="#test">Order</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{-- modal time --}}
   <div class="modal fade" id="timemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content" style="background: #FEEFEF ">
@@ -292,7 +253,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          {{-- <a href="order"><button type="button" class="btn btn-primary" style="background-color: #D75053">Order</button></a> --}}
         </div>
       </div>
     </div>
@@ -304,7 +264,6 @@
 AOS.init();
 $('.date').datepicker({
   format: "yyyy/mm/dd"
-  // todayBtn: "linked"
 });
 
 $(".btn-time").click(function(){
@@ -323,7 +282,6 @@ function incrementValue(e) {
   var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
 
   if (!isNaN(currentVal)) {
-      // currentVal = currentVal-1;
       parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
       console.log(currentVal);
   } else {
@@ -356,10 +314,8 @@ $('#qty').on('click', '.button-minus', function(e) {
 (function() {
   'use strict';
   window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
       var forms = document.getElementsByClassName('needs-validation');
       
-      // Loop over them and prevent submission
       var validation = Array.prototype.filter.call(forms, function(form) {
           form.addEventListener('submit', function(event) {
               if (form.checkValidity() === false) {
@@ -377,7 +333,7 @@ if(uniqId==0){
   uniqId++;
   console.log(uniqId);
   $('#uniqId').val(uniqId);
-  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required data-qty>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
 }
 
 $('#btn-create').click(function(){
@@ -385,7 +341,7 @@ $('#btn-create').click(function(){
   console.log(uniqId);
   
   $('#uniqId').val(uniqId);
-  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required data-qty>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
 });
 
 $('#btn-reset').click(function(){
@@ -400,14 +356,21 @@ $('#btn-reset').click(function(){
   }
 });
 
-// const d = new
-
 $('#btn-submit').click(function(){
+  var x = document.getElementById("firstname").value;
   if('.datereservation' != Date()){
-    // $('#errordate').append('<div class="date-error">Please input the specific date.</div>')
-    // console.log('hai ini error');
-    alert('Please input the specific date.');
-    document.getElementById("datereservation").focus();
+    var cek = document.getElementById('qty_'+uniqId)
+    var inputs = document.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+    if(inputs[i].hasAttribute("required")){
+        if(inputs[i].value != "" && !inputs[i].hasAttribute("data-qty")){
+            // found an empty field that is required
+            alert('Please input the specific date.');
+            document.getElementById("datereservation").focus();
+            break;
+        }
+      }
+    }
   }
 })
 

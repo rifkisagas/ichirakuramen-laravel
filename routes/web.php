@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,9 @@ Route::get('/contact', function () {
 Route::get('/order', function () {
     return view('order');
 });
+
+Route::get('/transaction', function () {
+    return view('transaction');
+});
+
+Route::resource('/getReservations', ReservationController::class);
