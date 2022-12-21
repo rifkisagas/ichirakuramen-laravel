@@ -15,8 +15,12 @@ class Order extends Model
         $reservations = Order::latest()->paginate(1); 
     }
 
-    public function orders(){
+    public function reservations(){
         return $this->belongsTo(Reservation::class,'reservation_id','reservation_id');
         
+    }
+    public function menus(){
+        return $this->belongsTo(Menu::class,'menu_id','menu_id');
+
     }
 }

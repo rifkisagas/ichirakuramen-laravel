@@ -14,7 +14,7 @@
             <div class="hover-overlay"></div>
             <div class="hover-2-content">
               <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light"></span>Dine-in</h3>
-              <p class="hover-2-description font-weight-light mb-0">Made with Pork-bone soup skimmed to perfection</p>
+              <p class="hover-2-description font-weight-light mb-0">Book your seat and feel the nice and peacefull Ichiraku's Atmosphere</p>
             </div>
           </div></a>
         </div>
@@ -24,7 +24,7 @@
             <div class="hover-overlay"></div>
             <div class="hover-2-content">
               <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Room-delivery</span></h3>
-              <p class="hover-2-description font-weight-light mb-0">Served with The special "umami" inside the secret broth</p>
+              <p class="hover-2-description font-weight-light mb-0">Enjoy the ramen by yourself with the same Ichiraku's Atmosphere</p>
             </div>
           </div></a>
         </div>

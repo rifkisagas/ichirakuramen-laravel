@@ -14,12 +14,12 @@ class ReservationController extends Controller
     public function index()
     {
         //get posts
-        $reservations = Reservation::latest()->paginate(1);  
-        $menus = Menu::latest()->paginate(1);      
-        // $response['data'] = $reservations;
-
-        //render view with posts
-        return view('transaction', compact('menus','reservations'));
+        // $reservations = Reservation::latest()->paginate(1);
+        $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
+        $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get();
+        
+        // $total = 
+        return view('transaction', compact('orders'));
     }
     // public function getReservations(){
  
@@ -30,6 +30,14 @@ class ReservationController extends Controller
     
     //     return response()->json($response);
     // }
+
+    public function test(Request $request){
+        $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
+        $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get();
+
+        // dd($orders);
+        return response()->json($orders);
+    }
     public function store(Request $request)
     {
         $data= new Reservation();

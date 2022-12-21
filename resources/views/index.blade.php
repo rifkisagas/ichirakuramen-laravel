@@ -30,6 +30,7 @@
     </div>
   </header>
   <div id="reservations">
+    <div style="margin-top:120px;"></div>
     <div class="container-xxl">
       <div class="card text-bg-dark" data-aos="fade-up">
         <img src="images/ramen-bowl.jpg" class="card-img" style="opacity: 0.7">
@@ -38,7 +39,7 @@
             <div class="card-body">
               <div class="col-md-5" style="float:right;">
                 <div class="white-box box-pad" style="margin-top:40%;height:50%;" data-aos="fade-left">
-                  <div class="res-content" style="font-family: westmount-light;">
+                  <div class="res-content" style="font-family: westmount-light; color:black;">
                     <h5 class="card-title" style="margin-bottom:20px;font-size: 28px">Served from the bottom of heart</h5>
                     <p class="card-text" style="font-size: 16px">Ichiraku, is a japanese restaurant and sushi bar offering a modern interpretation of Japanese cuisine. Featuring innovative and original creations, Ichiraku takes a bold and distinct approach in its menu, incorporating fresh and seasonal produce and ingrediens from the Hidden Leaf Village.</p>
                   </div>

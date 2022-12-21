@@ -43,3 +43,5 @@ Route::get('/transaction', function () {
 });
 
 Route::resource('/getReservations', ReservationController::class);
+
+Route::get('/test', [ReservationController::class, 'test']);

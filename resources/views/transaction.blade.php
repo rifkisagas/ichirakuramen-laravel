@@ -7,54 +7,43 @@
       <div class="card-body mx-4">
         <div class="container">
           <p class="my-5 mx-5" style="font-size: 30px;">Order Receipt</p>
+          @php
+          $total = 0;
+          @endphp
+          @foreach($orders as $key => $order)
+          @if($key == 0)
           <div class="row">
-            @foreach($menus as $key => $menu)
-            @foreach($reservations as $key => $cust)
-            <ul class="list-unstyled">
-              <li class="text-black">{{ $cust->firstname ." ". $cust->lastname}} </li>
-              <li class="text-muted mt-1"><span class="text-black">Order</span>#034{{ $cust->reservation_id }}</li>
-              <li class="text-black mt-1">{{ $cust->created_at}}</li>
+            <ul class="list-unstyled col-xl-6">
+              <li class="text-black">{{ $order->reservations->firstname ." ". $order->reservations->lastname}} </li>
+              <li class="text-muted mt-1"><span class="text-black">Order</span>#034{{ $order->reservations->reservation_id }}</li>
+              <li class="text-black mt-1">{{ $order->reservations->created_at}}</li>
             </ul>
-            <hr>
-            <div class="col-xl-10">
-              <p>{{$menu->nama_menu}}</p>
-            </div>
-            <div class="col-xl-2">
-              <p class="float-end">Rp.{{$menu->harga}}
-              </p>
-            </div>
-            <hr>
           </div>
+          @endif
           <div class="row">
-            <div class="col-xl-10">
-              <p>Consulting</p>
+            <div class="col-xl-5">
+              <p>{{$order->menus->nama_menu}}</p>
+            </div>
+            <div class="col-xl-5">
+              <p>{{$order->qty}}</p>
             </div>
             <div class="col-xl-2">
-              <p class="float-end">$100.00
+              <p class="float-end">Rp.{{$order->menus->harga}}
               </p>
             </div>
             <hr>
           </div>
-          <div class="row">
-            <div class="col-xl-10">
-              <p>Support</p>
-            </div>
-            <div class="col-xl-2">
-              <p class="float-end">$10.00
-              </p>
-            </div>
-            <hr style="border: 2px solid black;">
-          </div>
+          @php
+          $total = $total + $order->menus->harga;
+          @endphp
+          @endforeach
           <div class="row text-black">
-    
             <div class="col-xl-12">
-              <p class="float-end fw-bold">Total: $10.00
+              <p class="float-end fw-bold">Total: Rp.{{$total}}
               </p>
             </div>
             <hr style="border: 2px solid black;">
           </div>
-          @endforeach
-          @endforeach
           <div class="text-center" style="margin-top: 12px">
             <p>To complete the transaction, please choose the payment method.</p>
           </div>
