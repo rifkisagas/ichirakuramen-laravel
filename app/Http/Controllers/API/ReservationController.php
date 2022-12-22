@@ -13,31 +13,18 @@ class ReservationController extends Controller
 {
     public function index()
     {
-        //get posts
-        // $reservations = Reservation::latest()->paginate(1);
         $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
-        $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get();
-        
-        // $total = 
+        $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get(); 
         return view('transaction', compact('orders'));
     }
-    // public function getReservations(){
- 
-    //     $reservations = Reservation::orderby('id','desc')->select('*')->get(); 
-         
-    //     // Fetch all records
-    //     $response['data'] = $employees;
-    
-    //     return response()->json($response);
-    // }
 
     public function test(Request $request){
         $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
         $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get();
 
-        // dd($orders);
         return response()->json($orders);
     }
+    
     public function store(Request $request)
     {
         $data= new Reservation();
@@ -50,18 +37,19 @@ class ReservationController extends Controller
         $data->reservationnotes = $request->reservationnotes;
 
         $data->save();
-
+        
         
         for ($i=1; $i <= $request->uniqId ; $i++) { 
             $data2 = new Order();
-            $data2->menu_id = $request->menu_id_+$i;
-            $data2->qty = $request->qty_+$i;
+            $temp = $request->qty_+$i;
+            $data2->menu_id = $request->{"menu_id_".$i};
+            $data2->qty = $request->{"qty_".$i};
             $reservation_id = DB::table('reservations')->where('email', $data->email)->pluck('reservation_id')->first();
             $data2 ->reservation_id = $reservation_id;
             $data2->save();
         }
         
-        return redirect('getReservations');
+        return redirect('transactions');
 
         // return response()->json([
         //     'message' => 'Berhasil',

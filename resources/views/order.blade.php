@@ -93,8 +93,8 @@
               <div class="row">
                 <h5>Menu Selection</h5>
                 <div class="col">
-                  <button type="button" class="btn btn-primary" style="background-color: #D75053" id="btn-create">Add Order</button>
-                  <button type="button" class="btn btn-primary" style="background-color: #D75053" id="btn-reset">Reset</button>
+                  <button type="button" class="btn btn-danger" style="background-color: #D75053" id="btn-create">Add Order</button>
+                  <button type="button" class="btn btn-danger" style="background-color: #D75053" id="btn-reset">Reset</button>
                   <div style="margin-bottom: 12px"></div>
                   <div class='input-group' id="adddropdown">
                     {{-- add order reset order --}}
@@ -333,7 +333,7 @@ if(uniqId==0){
   uniqId++;
   console.log(uniqId);
   $('#uniqId').val(uniqId);
-  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required data-qty>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
 }
 
 $('#btn-create').click(function(){
@@ -341,7 +341,7 @@ $('#btn-create').click(function(){
   console.log(uniqId);
   
   $('#uniqId').val(uniqId);
-  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required data-qty>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
+  $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
 });
 
 $('#btn-reset').click(function(){
@@ -356,23 +356,25 @@ $('#btn-reset').click(function(){
   }
 });
 
-$('#btn-submit').click(function(){
-  var x = document.getElementById("firstname").value;
-  if('.datereservation' != Date()){
-    var cek = document.getElementById('qty_'+uniqId)
-    var inputs = document.getElementsByTagName('input');
-    for (var i = 0; i < inputs.length; i++) {
-    if(inputs[i].hasAttribute("required")){
-        if(inputs[i].value != "" && !inputs[i].hasAttribute("data-qty")){
-            // found an empty field that is required
-            alert('Please input the specific date.');
-            document.getElementById("datereservation").focus();
-            break;
-        }
-      }
-    }
-  }
-})
+// $('#btn-submit').click(function(){
+//   var x = document.getElementById("firstname").value;
+//   if('.datereservation' != Date()){
+//     var cek = document.getElementById('qty_'+uniqId)
+//     var inputs = document.getElementsByTagName('input');
+//     for (var i = 0; i < inputs.length; i++) {
+//     if(inputs[i].hasAttribute("required")){
+//         if(inputs[i].value != ""){
+//           if(!inputs[i].hasAttribute("accesskey")){
+//             // found an empty field that is required
+//             alert('Please input the specific date.');
+//             document.getElementById("datereservation").focus();
+//             break;
+//           }
+//         }
+//       }
+//     }
+//   }
+// })
 
 </script>
 

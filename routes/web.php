@@ -38,10 +38,10 @@ Route::get('/order', function () {
     return view('order');
 });
 
-Route::get('/transaction', function () {
+Route::get('/transaction', function (){
     return view('transaction');
 });
 
-Route::resource('/getReservations', ReservationController::class);
+Route::resource('/transactions', ReservationController::class);
 
 Route::get('/test', [ReservationController::class, 'test']);

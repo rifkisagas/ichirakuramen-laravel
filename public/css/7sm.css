@@ -501,6 +501,49 @@ header:after{
     font-family: westmount-light;
  }
 
+ .btn.btn-transaction{
+    background-color: #ddd;
+    color: black;
+    box-shadow: none;
+    border: none;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+ }
+ .btn.btn-transaction:focus,
+ .btn.btn.btn-transaction:hover {
+    background-color: rgb(194, 194, 194);
+    color: black;
+    box-shadow: none;
+    border: none;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+ .fab.fa-cc-paypal {
+    font-size: 32px;
+    color: #3333f7;
+ }
+
+ .fab.fa-cc-amex {
+    color: #1c6acf;
+    font-size: 32px;
+}
+
+.fab.fa-cc-mastercard {
+    font-size: 32px;
+    color: red;
+}
+
+.fab.fa-cc-discover {
+    font-size: 32px;
+    color: orange;
+}
+
+.c-green {
+    color: green;
+}
 /* .receip */
 
 [data-aos="fade-out"] {
