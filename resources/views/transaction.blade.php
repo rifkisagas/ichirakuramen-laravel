@@ -35,7 +35,7 @@
               </ul>
               <ul class="list-unstyled col-xl-6">
                 <div class="row">
-                  <div class="col-xl-4">
+                  <div class="col-xl-5">
                     <li class="text-black">Date Reservation</li>
                     <li class="text-muted mt-1"><span class="text-black">Time Reservation</span></li>
                     <li class="text-black mt-1">Reservation Notes</li>
@@ -45,7 +45,7 @@
                     <li class="text-black mt-1"> : </li>
                     <li class="text-black mt-1"> : </li>
                   </div>
-                  <div class="col-xl-7">
+                  <div class="col-xl-6">
                     <li class="text-black"> {{ $order->reservations->datereservation}} </li>
                     <li class="text-black mt-1">{{ $order->reservations->timerange}} WIB</li>
                     {{-- @php
@@ -65,34 +65,44 @@
               <div class="col-xl-3">
                 <p>Menu</p>
               </div>
-              <div class="col-xl-7">
+              <div class="col-xl-6">
                 <p>Qty</p>
               </div>
-              <div class="col-xl-2">
+              <div class="col-xl-3">
                 <p class="float-end">Price</p>
               </div>
             </div>
             <hr>
             @php
             $order_id = $order->reservations->reservation_id;
+
+            $price = $order->menus->harga * $order->qty;
             @endphp
             @endif
             <div class="row">
               <div class="col-xl-3">
                 <p>{{$order->menus->nama_menu}}</p>
               </div>
-              <div class="col-xl-7">
+              <div class="col-xl-6">
                 <p>{{$order->qty}}</p>
               </div>
-              <div class="col-xl-2">
+              <div class="col-xl-3">
+                @if ($order->qty > 1)
+                <p class="float-end">Rp.{{$order->menus->harga}} x {{$order->qty}} = Rp.{{$order->menus->harga * $order->qty}}
+                </p>
+                @php
+                $total = $total + $order->menus->harga * $order->qty
+                @endphp
+                @else
                 <p class="float-end">Rp.{{$order->menus->harga}}
                 </p>
+                @php
+                $total = $total + $order->menus->harga;
+                @endphp
+                @endif
               </div>
               <hr>
             </div>
-            @php
-            $total = $total + $order->menus->harga;
-            @endphp
             @endforeach
             <div class="row text-black">
               <div class="col-xl-12">
@@ -220,10 +230,12 @@
             <div class="btn btn-primary payment"> Make Payment </div>
           </div> --}}
         </div>
+        {{-- <form action="/print_receipt" method="GET"> --}}
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" style="background-color: #D75053">Make Payment</button>
+          <button id="buttonpay" type="button" class="btn btn-danger" style="background-color: #D75053;"  onclick="redirect()">Make Payment</button>
         </div>
+        {{-- </form> --}}
       </div>
     </div>
   </div>
@@ -240,7 +252,21 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, back to transaction</button>
-          <button onclick="window.location='{{ url("order") }}'"type="button" class="btn btn-danger" style="background-color: #D75053">Yes, i want to cancel the order</button>
+          <button onclick="window.location='{{ url("order") }}' "type="button" class="btn btn-danger" style="background-color: #D75053">Yes, i want to cancel the order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="success" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Transaction Complete!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Please save your receipt as the form of validation.
+          You will be redirected to the main menu right away..
         </div>
       </div>
     </div>
@@ -250,6 +276,15 @@
 @include('layouts.script')
 <script>
 AOS.init();
+function redirect(){
+  window.location='{{ url("print_receipt") }}';
+  $('#payment').modal('hide')
+  $('#success').modal('show');
+  setTimeout(backurl, 6000);
+}
+function backurl(){
+  document.location.href = '/';
+}
 </script>
 
 </html>

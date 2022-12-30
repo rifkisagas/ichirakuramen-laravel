@@ -45,3 +45,9 @@ Route::get('/transaction', function (){
 Route::resource('/transactions', ReservationController::class);
 
 Route::get('/test', [ReservationController::class, 'test']);
+
+// Route::get('/test', function (){
+//     return view('print_receipt');
+// });
+
+Route::get('/print_receipt', [ReservationController::class, 'print_receipt']);

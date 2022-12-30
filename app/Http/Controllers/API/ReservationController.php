@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use App\Models\Order;
 use App\Models\Menu;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class ReservationController extends Controller
 {
@@ -17,13 +18,6 @@ class ReservationController extends Controller
         $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get(); 
         return view('transaction', compact('orders'));
     }
-
-    public function test(Request $request){
-        $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
-        $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get();
-
-        return response()->json($orders);
-    }
     
     public function store(Request $request)
     {
@@ -31,7 +25,7 @@ class ReservationController extends Controller
         $data->firstname = $request->firstname;
         $data->lastname = $request->lastname;
         $data->email = $request->email;
-        $data->phonenumber = $request->phonenumber;
+        $data->phonenumber = 62 . $request->phonenumber;
         $data->datereservation = $request->datereservation;
         $data->timerange = $request->timerange;
         $data->reservationnotes = $request->reservationnotes;
@@ -54,5 +48,20 @@ class ReservationController extends Controller
         // return response()->json([
         //     'message' => 'Berhasil',
         // ],200);
+    }
+    public function print_receipt(Request $request){
+        $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
+        $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get(); 
+
+        $pdf = PDF::loadview('print_receipt', compact('orders'));
+        // $pdf->setPaper('Legal', 'horizontal');
+        return $pdf->download('order_receipt.pdf');
+    }
+    public function test(Request $request){
+        
+        $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
+        $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get();
+
+        return view('print_receipt', compact('orders'));
     }
 }

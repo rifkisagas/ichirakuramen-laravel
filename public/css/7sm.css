@@ -158,14 +158,33 @@ header:after{
 .big-title-res{
     position: absolute;
     line-height: 4rem;
-    top: calc(78% - 2rem);
+    top: calc(63% - 2rem);
     width: 100%;
     text-align: center;
+    z-index: 999999;
+}
+
+.big-title-res a{
     font-size: 1.5rem;
     font-weight: 600;
-    color: #D75053;
-    font-family: westmount-light;
+    color: #ecd1d1;
+    font-family: westmount-ex-light;
 }
+
+.big-title-res a:link { text-decoration: none; }
+
+
+.big-title-res a:visited { text-decoration: none; }
+
+
+.big-title-res a:hover { 
+    text-decoration: none;
+    color: #ffeaea;
+}
+
+
+.big-title-res a:active { text-decoration: none; }
+
 .big-title-out.aos-animate{
     opacity: 0;
 }
@@ -544,7 +563,15 @@ header:after{
 .c-green {
     color: green;
 }
-/* .receip */
+/* .receipt */
+
+/* .receipt-logo{
+    background: url(../images/icon.png) no-repeat center;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
 
 [data-aos="fade-out"] {
     opacity: 0;
