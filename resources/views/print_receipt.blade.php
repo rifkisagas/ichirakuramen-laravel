@@ -68,8 +68,9 @@
       }
 
       .invoice-box table tr.top table td.title {
-        font-size: 45px;
-        line-height: 45px;
+        font-size: 30px;
+        line-height: 30px;
+        /* background-image: url('images/ichiraku-logo-receipt.png'); */
         color: #333;
       }
 
@@ -124,13 +125,19 @@
               <tr>
                 <td class="title">
                   <span>Order Receipt</span>
+                  {{-- <img src="
+                  @php
+                   $base64 = public_path('\images\ichiraku-logo-receipt.png');
+                   $image = base64_encode(file_get_contents($base64));    
+                  @endphp
+                  " alt="logo"/> --}}
                 </td>
       @php
       $total = 0;
       @endphp
       @foreach($orders as $key => $order)
       @if($key == 0)
-                <td> Order ID <a style="color: grey">#034{{ $order->reservations->reservation_id }} </a><br /></td>
+                <td> Order ID <a style="color: grey">#034{{ $order->reservations->reservation_id }} </a><br /> Order Type : {{$order->reservations->reservation_type}}</td>
               </tr>
             </table>
           </td>
@@ -140,7 +147,11 @@
             <table>
               <tr>
                 <td> Customer : {{ $order->reservations->firstname ." ". $order->reservations->lastname}}  <br /> Email : {{ $order->reservations->email}}<br /> Phone Number : {{ $order->reservations->phonenumber}} </td>
+                @if($order->reservations->reservation_type == "Dine - in")
                 <td> Date Reservation : {{ $order->reservations->datereservation}} <br /> Time Reservation : {{ $order->reservations->timerange}} WIB <br /> Status : <a style="color: green">Paid<a></td>
+                @else
+                <td> Room Number : {{ $order->reservations->roomnumber}} <br /> Status : <a style="color: green">Paid<a></td>
+                @endif
               </tr>
             </table>
           </td>
@@ -153,8 +164,6 @@
         </tr>
       @php
       $order_id = $order->reservations->reservation_id;
-
-      $total = $total + $order->menus->harga;
       @endphp
       @endif
         <tr class="item">
@@ -163,6 +172,9 @@
           <td>Rp.{{$order->menus->harga}}</td>
           <td>Rp.{{$order->menus->harga * $order->qty}}</td>
         </tr>
+      @php
+      $total = $total + $order->menus->harga * $order->qty;
+      @endphp
       @endforeach
         <tr class="total">
           <td></td>

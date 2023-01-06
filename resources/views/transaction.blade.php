@@ -6,13 +6,25 @@
     <div class="card ">
       <div class="card-body mx-4">
         <div class="container">
-          <p class="my-5 mx-5" style="font-size: 30px;">Order Receipt</p>
+          @php
+          $total = 0;
+          @endphp
+          @foreach($orders as $key => $order)
+          @if($errors->any())
+          <h4>{{$errors->first()}}</h4>
+          @endif
+          @if($key == 0)
+          <div class="row">
+            <div class="col-md-6">
+              <p class="my-5 mx-5" style="font-size: 30px;">Order Receipt</p>
+            </div>
+            <div class="col-md-6">
+              <br>
+              <p class="my-5 mx-5" style="font-size: 20px; float: right;">Order type : {{$order->reservations->reservation_type}}</p>
+            </div>
+          </div>
+          {{-- <p class="my-1 mx-1" style="font-size: 30px; float: right;">Order Receipt</p> --}}
           <div class="container-sm">
-            @php
-            $total = 0;
-            @endphp
-            @foreach($orders as $key => $order)
-            @if($key == 0)
             <div class="row">
               <ul class="list-unstyled col-xl-6">
                 <div class="row">
@@ -35,6 +47,7 @@
               </ul>
               <ul class="list-unstyled col-xl-6">
                 <div class="row">
+                  @if($order->reservations->reservation_type == "Dine - in")
                   <div class="col-xl-5">
                     <li class="text-black">Date Reservation</li>
                     <li class="text-muted mt-1"><span class="text-black">Time Reservation</span></li>
@@ -48,15 +61,30 @@
                   <div class="col-xl-6">
                     <li class="text-black"> {{ $order->reservations->datereservation}} </li>
                     <li class="text-black mt-1">{{ $order->reservations->timerange}} WIB</li>
-                    {{-- @php
-                    $notes = $order->reservation->reservationnotes;
-                    @endphp --}}
                     @if (!empty($order->reservation->reservationnotes))
                     <li class="text-black mt-1">{{ $order->reservations->reservationnotes}}</li>
                     @else
                     <li class="text-black mt-1">-</li>
                     @endif
                   </div>
+                  @else
+                  <div class="col-xl-5">
+                    <li class="text-black">Room Number</li>
+                    <li class="text-black mt-1">Reservation Notes</li>
+                  </div>
+                  <div class="col-xl-1">
+                    <li class="text-black"> : </li>
+                    <li class="text-black mt-1"> : </li>
+                  </div>
+                  <div class="col-xl-6">
+                    <li class="text-black"> {{ $order->reservations->roomnumber}} </li>
+                    @if (!empty($order->reservation->reservationnotes))
+                    <li class="text-black mt-1">{{ $order->reservations->reservationnotes}}</li>
+                    @else
+                    <li class="text-black mt-1">-</li>
+                    @endif
+                  </div>
+          @endif
                 </div>
               </ul>
             </div>
@@ -252,7 +280,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, back to transaction</button>
-          <button onclick="window.location='{{ url("order") }}' "type="button" class="btn btn-danger" style="background-color: #D75053">Yes, i want to cancel the order</button>
+          <button onclick="window.location='{{ url("api/delete_data") }}' "type="button" class="btn btn-danger" style="background-color: #D75053">Yes, i want to cancel the order</button>
         </div>
       </div>
     </div>
@@ -285,6 +313,16 @@ function redirect(){
 function backurl(){
   document.location.href = '/';
 }
+
+$(window).load(function(){
+  if(localStorage.getItem('status')){
+    routes('/');
+  }
+  else{
+
+  }
+});
+
 </script>
 
 </html>

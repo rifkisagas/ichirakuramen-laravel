@@ -28,7 +28,7 @@
         <h3 class="big-title-comment translate" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="2000">・The Finest Ramen from The Hidden Leaf Village・</h3>
       </div>
       <div class="big-title-res hvr-grow">
-        <a href="order" data-aos="fade-up" data-aos-delay="2000" data-aos-duration="1000">Make a Reservation</a>
+        <a href="order" data-aos="fade-up" data-aos-delay="2500" data-aos-duration="1000">Make a Reservation</a>
       </div>
     </div>
   </header>

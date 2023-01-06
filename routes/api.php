@@ -21,5 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/reservation', [ReservationController::class, 'store']);
+Route::post('/reservation_dine', [ReservationController::class, 'storedine']);
+Route::post('/reservation_delivery', [ReservationController::class, 'storedelivery']);
+Route::get('/delete_data', [ReservationController::class, 'delete_data']);
 // Route::post('/cancelorder')

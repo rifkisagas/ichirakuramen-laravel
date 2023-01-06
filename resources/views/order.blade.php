@@ -39,12 +39,12 @@
       <div class="modal-content" style="background: #FEEFEF ">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Dine-in</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" id="modalclose" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form name="myForm" action="{{url('api/reservation')}}" class="needs-validation" method="POST" novalidate>
+          <form id="form-order" name="myForm" action="{{url('api/reservation_dine')}}" class="needs-validation" method="POST" novalidate>
             {{ csrf_field() }}
           <div class="row">
             <div class="col-md-5">
@@ -204,6 +204,223 @@
     </div>
   </div>
 
+  {{-- Modal room--}}
+
+  <div class="modal fade" id="delivery" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
+      <div class="modal-content" style="background: #FEEFEF ">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Room-delivery</h5>
+          <button type="button" id="modalclose-delivery" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form name="myForm" action="{{url('api/reservation_delivery')}}" class="needs-validation" method="POST" novalidate>
+            {{ csrf_field() }}
+          <div class="row">
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col">
+                  <div class='input-group'>
+                    <label for="basic-url" class="form-label">Your Information</label>
+                    <div class="input-group mb-3">
+                      <input type="text" id="firstname" name="firstname" class="form-control checker" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required>
+                      <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required>
+                      <div class="invalid-feedback">Valid name required for valid orders.</div>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Email Address (user@mail.com)" aria-label="Email Address" aria-describedby="basic-addon2" required>
+                      <div class="invalid-feedback">Valid email address required for valid orders.</div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon2">+62</span>
+                      <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone Number (81234567891)" aria-label="Phone Number" aria-describedby="basic-addon2" required>
+                      <div class="invalid-feedback">Valid phone number required for valid orders.</div>
+                    </div>
+                    
+                    <label for="basic-url" class="form-label">Summary</label>
+                    <div class="input-group mb-3">
+                      <button data-toggle="modal" data-target="#roomnumbermodal" class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fa-regular fa-clock"></i></button>
+                      <input type="text" placeholder="Room Number (01)" class="form-control" id="roomnumber" name="roomnumber" aria-label="Disabled input example" aria-describedby="basic-addon" required>
+                      <div class="invalid-feedback">Please choose the room number.</div>
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-text">Reservation Notes</span>
+                      <textarea class="form-control" id="reservationnotes" name="reservationnotes" aria-label="With textarea"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:20px"></div>
+              <div class="row">
+                <h5>Menu Selection</h5>
+                <div class="col">
+                  <button type="button" class="btn btn-danger" style="background-color: #D75053" id="btn-create-delivery">Add Order</button>
+                  <button type="button" class="btn btn-danger" style="background-color: #D75053" id="btn-reset-delivery">Reset</button>
+                  <div style="margin-bottom: 12px"></div>
+                  <div class='input-group-delivery' id="adddropdown-delivery">
+                    {{-- add order reset order --}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="container">
+                <div class="menu-filters-order d-flex-row">
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="all" style="z-index: 999">
+                    All
+                  </button>
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="ramen">
+                    Ramen
+                  </button>
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="sushi">
+                    Sushi
+                  </button>
+                  <button class="btn btn-small btn-menu-order hvr-grow p-2" data-toggle="portfilter" data-target="drink">
+                    Drink
+                  </button>
+                </div>
+                <div class="row">
+                  <div class="col-md-4" style="margin-bottom:20px" data-tag="ramen">
+                    <div class="card hover hover-2 remover menu-choose-delivery" value="1" type="button">
+                      <img src="images/tonkotsuramen.png" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light"></span>Tonkotsu</h3>
+                        <p class="hover-2-description font-weight-light mb-0">Made with Pork-bone soup skimmed to perfection</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4" style="margin-bottom:20px" data-tag="ramen">
+                    <div class="card hover hover-2 remover menu-choose-delivery" value="2" type="button">
+                      <img src="images/kamadareramen.png" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Kamadare </span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">Served with The special "umami" inside the secret broth</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4" style="margin-bottom:20px" data-tag="ramen">
+                    <div class="card hover hover-2 remover menu-choose-delivery" value="3" type="button">
+                      <img src="images/gokakuramen.png" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Gokaku </span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">"Gokaku" is Japanese for "passing an exam"</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
+                    <div class="card hover hover-2 remover menu-choose-delivery" value="4" type="button">
+                      <img src="images/spicytuna.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">spicy </span> tuna roll</h3>
+                        <p class="hover-2-description font-weight-light mb-0">Raw tuna with Ichimi togarashi</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
+                    <div class="card hover hover-2 remover menu-choose-delivery" value="5" type="button">
+                      <img src="images/shrimptempura.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Tempura </span> Sushi</h3>
+                        <p class="hover-2-description font-weight-light mb-0">Lightly battered and crispy coating</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4" style="margin-bottom:20px" data-tag="sushi" >
+                    <div class="card hover hover-2 remover menu-choose-delivery" value="6" type="button">
+                      <img src="images/chutoro.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Chu-toro</span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">The significant flavor of akami with sweet tenderness of an o-toro</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4" style="margin-bottom:20px" data-tag="drink" >
+                     <div class="card hover hover-2 remover menu-choose-delivery" value="7" type="button">
+                      <img src="images/ocha.jpg" class="card-img-top" alt="...">
+                      <div class="hover-overlay"></div>
+                      <div class="hover-2-content">
+                        <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Ocha </span></h3>
+                        <p class="hover-2-description font-weight-light mb-0">Made with the bancha tea leaves from kyoto</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input type="hidden" placeholder="Time Reservation" class="form-control" id="uniqId_delivery" name="uniqId_delivery" aria-label="Disabled input example" aria-describedby="basic-addon"/>            
+          <button type="submit" id="btn-submit" class="btn btn-danger" style="background-color: #D75053">Order</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {{-- modal room number --}}
+  <div class="modal fade" id="roomnumbermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content" style="background: #FEEFEF ">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Room Number</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button class="btn btn-secondary btn-room" data-dismiss="modal" value="01" type="button" style="background-color: #D75053">01</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room" data-dismiss="modal" value="02" style="background-color: #D75053">02</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room"  data-dismiss="modal" value="03" style="background-color: #D75053; height:2cm">03</button>
+              </div>
+            </div>
+            <div class="row" style="margin-top: 2cm">
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room" data-dismiss="modal" value="04" style="background-color: #D75053">04</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room" data-dismiss="modal" value="05" style="background-color: #D75053">05</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room" data-dismiss="modal" value="06" style="background-color: #D75053; height:2cm">06</button>
+              </div>
+            </div>
+            <div class="row" style="margin-top: 2cm">
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room" data-dismiss="modal" value="07" style="background-color: #D75053">07</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room" data-dismiss="modal" value="08" style="background-color: #D75053">08</button>
+              </div>
+              <div class="col-4 d-grid gap-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-room" data-dismiss="modal" value="09" style="background-color: #D75053; height:2cm">09</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   {{-- modal time --}}
   <div class="modal fade" id="timemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -271,9 +488,18 @@ $(".btn-time").click(function(){
     $("#timerange").val($(this).val());
 });
 
+$(".btn-room").click(function(){
+    console.log($(this).val());
+    $("#roomnumber").val($(this).val());
+});
+
 $(".menu-choose").click(function () {
     $('#menu-' +uniqId).val($(this).attr('value'))
-});  
+});
+
+$(".menu-choose-delivery").click(function () {
+    $('#menu-delivery-' +uniqId).val($(this).attr('value'))
+});
 
 function incrementValue(e) {
   e.preventDefault();
@@ -311,6 +537,14 @@ $('#qty').on('click', '.button-minus', function(e) {
     decrementValue(e);
 });
 
+$('#qty_delivery').on('click', '.button-plus', function(e) {
+    incrementValue(e);
+});
+
+$('#qty_delivery').on('click', '.button-minus', function(e) {
+    decrementValue(e);
+});
+
 (function() {
   'use strict';
   window.addEventListener('load', function() {
@@ -333,8 +567,22 @@ if(uniqId==0){
   uniqId++;
   console.log(uniqId);
   $('#uniqId').val(uniqId);
+  $('#uniqId_delivery').val(uniqId);
+  $('#adddropdown-delivery').append('<div id="parrentmenudelivery-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_delivery'+ uniqId+'" id="menu-delivery-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqtydelivery-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_delivery'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
   $('#adddropdown').append('<div id="parrentmenu-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_'+ uniqId+'" id="menu-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqty-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
 }
+
+$('#modalclose').click(function(){
+  while(uniqId!=1){
+    if(uniqId > 1){
+      $('#menu-'+uniqId).remove();
+      $('#menuqty-'+uniqId).remove();
+      $('#parrentmenu-'+uniqId).remove();
+      uniqId--;
+    }
+    console.log(uniqId);
+  }
+});
 
 $('#btn-create').click(function(){
   uniqId++;
@@ -345,11 +593,43 @@ $('#btn-create').click(function(){
 });
 
 $('#btn-reset').click(function(){
-  while(uniqId!=0){
-    if(uniqId > 0){
+  while(uniqId!=1){
+    if(uniqId > 1){
       $('#menu-'+uniqId).remove();
       $('#menuqty-'+uniqId).remove();
       $('#parrentmenu-'+uniqId).remove();
+      uniqId--;
+    }
+    console.log(uniqId);
+  }
+});
+
+$('#modalclose-delivery').click(function(){
+  while(uniqId!=1){
+    if(uniqId > 1){
+      $('#menudelivery-'+uniqId).remove();
+      $('#menuqtydelivery-'+uniqId).remove();
+      $('#parrentmenudelivery-'+uniqId).remove();
+      uniqId--;
+    }
+    console.log(uniqId);
+  }
+});
+
+$('#btn-create-delivery').click(function(){
+  uniqId++;
+  console.log(uniqId);
+  
+  $('#uniqId_delivery').val(uniqId);
+  $('#adddropdown-delivery').append('<div id="parrentmenudelivery-'+ uniqId +'"class="input-group mb-3"> <select class="form-select d-sm-inline-flex p-2" aria-label="Default select example" name="menu_id_delivery'+ uniqId+'" id="menu-delivery-'+ uniqId +'" required><option></option>                        <option value="1">Tonkotsu Ramen</option>                        <option value="2">Kamadare Ramen</option>                        <option value="3">Gokaku Ramen</option>                        <option value="4">Spicy Tuna</option>                        <option value="5">Tempura Sushi</option>                        <option value="6">Chu-toro Sushi</option>                        <option value="7">Ocha</option>                      </select>                      <input id="menuqtydelivery-'+ uniqId + '"type="number" step="1" max="10" min="0" value="1" name="qty_delivery'+uniqId+'" style="margin-left: 24px" class="quantity-field border-0 text-center w-25 d-sm-inline-flex justify-content-end" required>                      <div class="invalid-feedback">Please Select the menu to order.</div></div>');
+});
+
+$('#btn-reset-delivery').click(function(){
+  while(uniqId!=1){
+    if(uniqId > 1){
+      $('#menudelivery-'+uniqId).remove();
+      $('#menuqtydelivery-'+uniqId).remove();
+      $('#parrentmenudelivery-'+uniqId).remove();
       uniqId--;
     }
     console.log(uniqId);
@@ -375,6 +655,11 @@ $('#btn-reset').click(function(){
 //     }
 //   }
 // })
+
+// $("#form-order").on('submit', function(e) {
+//     e.preventDefault();
+//     localStorage.setItem('status', 1);
+// });
 
 </script>
 

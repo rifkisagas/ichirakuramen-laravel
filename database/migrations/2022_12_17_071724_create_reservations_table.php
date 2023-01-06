@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('email');
             $table->string('phonenumber');
-            $table->date('datereservation');
-            $table->string('timerange');
+            $table->date('datereservation') -> nullable();
+            $table->string('timerange') -> nullable();
             $table->string('reservationnotes') -> nullable();
+            $table->string('roomnumber') -> nullable();
+            $table->string('reservation_type');
             // $table->bigInteger('menu_id');
             $table->timestamps();
 
