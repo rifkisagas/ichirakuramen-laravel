@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('reservationnotes') -> nullable();
             $table->string('roomnumber') -> nullable();
             $table->string('reservation_type');
-            // $table->bigInteger('menu_id');
+            $table->string('status');
             $table->timestamps();
 
             // $table->foreign('menu_id')->references('menu_id')->on('menus');

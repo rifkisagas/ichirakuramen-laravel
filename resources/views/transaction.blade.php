@@ -305,7 +305,8 @@
 <script>
 AOS.init();
 function redirect(){
-  window.location='{{ url("print_receipt") }}';
+  // $payment_id = {{$order_id}};
+  window.location='{{ url("print_receipt/$order_id") }}';
   $('#payment').modal('hide')
   $('#success').modal('show');
   setTimeout(backurl, 6000);

@@ -31,7 +31,7 @@ class ReservationController extends Controller
         $data->timerange = $request->timerange;
         $data->reservationnotes = $request->reservationnotes;
         $data->reservation_type = "Dine - in";
-
+        $data->status = "UNPAID";
         $data->save();
         
         
@@ -62,6 +62,7 @@ class ReservationController extends Controller
         $data->roomnumber = $request->roomnumber;
         $data->reservationnotes = $request->reservationnotes;
         $data->reservation_type = "Room - Delivery";
+        $data->status = "UNPAID";
         $data->save();
         
         
@@ -82,10 +83,10 @@ class ReservationController extends Controller
         // ],200);
     }
 
-    public function print_receipt(Request $request){
+    public function print_receipt(Request $request, $id){
         $order_latest = Order::orderby('order_id','desc')->select('*')->pluck('reservation_id')->first();
         $orders = Order::with(['menus','reservations'])->where('reservation_id', $order_latest)->get(); 
-
+        DB::table('reservations')->where('reservation_id', $id)->update(['status' => 'PAID/PROCESS']);
 
         $base64 = public_path('\images\ichiraku-logo-receipt.png');
         $image = base64_encode(file_get_contents($base64));

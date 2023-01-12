@@ -7,28 +7,34 @@ use Encore\Admin\Controllers\Dashboard;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
+use App\Models\Reservation;
 
 class HomeController extends Controller
 {
     public function index(Content $content)
     {
         return $content
-            ->title('Dashboard')
+            ->title('Reservation Reports')
             // ->description('Description...')
-            // ->row(Dashboard::title('Ichiraku'))
+            // ->row(Dashboard::title())
             ->row(function (Row $row) {
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
+                $row->column(6, function (Column $column) {
+                    $data = Reservation::all();
+                    $column->append(view('admin/reportdinein', compact('data')));
+                });
+                $row->column(6, function (Column $column) {
+                    $data = Reservation::all();
+                    $column->append(view('admin/reportdelivery', compact('data')));
                 });
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
-                });
+                // $row->column(4, function (Column $column) {
+                //     $column->append(Dashboard::extensions());
+                // });
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::dependencies());
-                });
+                // $row->column(4, function (Column $column) {
+                //     $column->append(Dashboard::dependencies());
+                // });
             });
     }
 }

@@ -50,4 +50,4 @@ Route::get('/test', [ReservationController::class, 'test']);
 //     return view('print_receipt');
 // });
 
-Route::get('/print_receipt', [ReservationController::class, 'print_receipt']);
+Route::get('/print_receipt/{id}', [ReservationController::class, 'print_receipt']);
