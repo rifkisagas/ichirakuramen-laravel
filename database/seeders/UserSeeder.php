@@ -24,6 +24,13 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             ],
+            [
+                'name' => 'admin2',
+                'email' => 'admin2@mail.com',
+                'password' => '12345678',
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+            ],
         ];
         foreach ($user as $key => $value) {
             User::create($value);
