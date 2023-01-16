@@ -197,6 +197,17 @@ header:after{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.gallery{
+    position: absolute;
+    /* line-height: 4rem; */
+    top: calc(22% - 2rem);
+    width: 100%;
+    text-align: center;
+    /* font-size: 5rem; */
+    font-weight: 600;
+    color: #FEEFEF;
+    font-family: westmount-light;
+}
 
 /* order */
 .order-bg{
@@ -235,6 +246,17 @@ header:after{
     /* background-position: center; */
     background-repeat: no-repeat;
     background-size: cover;
+}
+.contacts{
+    position: absolute;
+    /* line-height: 4rem; */
+    top: calc(20% - 2rem);
+    width: 100%;
+    text-align: center;
+    /* font-size: 5rem; */
+    font-weight: 600;
+    color: #FEEFEF;
+    font-family: westmount-light;
 }
 
 /* about */
