@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         return $content
             ->title('Reservation Reports')
-            // ->description('Description...')
+            ->row('<form action="/export_excel"> <input type="submit" class="btn btn-info" value="Export Excel"></input> </form>')
             // ->row(Dashboard::title())
             ->row(function (Row $row) {
 

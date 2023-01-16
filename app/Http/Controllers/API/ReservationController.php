@@ -9,7 +9,12 @@ use App\Models\Order;
 use App\Models\Menu;
 use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf;
+use PDF;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\mailsend;
+use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DataExport;
 
 class ReservationController extends Controller
 {
@@ -90,12 +95,13 @@ class ReservationController extends Controller
 
         $base64 = public_path('\images\ichiraku-logo-receipt.png');
         $image = base64_encode(file_get_contents($base64));
-        $html = view('print_receipt', compact('orders', 'image'));
 
-        $dompdf 	= new Dompdf(array('enable_remote' => true));
-        $dompdf->loadHtml($html, 'UTF-8');
-        $dompdf->render();
-        $dompdf->stream('my.pdf',array('Attachment'=>0));
+        $html = view('print_receipt', compact('orders', 'image'));
+        $pdf = PDF::loadview('print_receipt', compact('orders', 'image'));
+        return $pdf -> download('order_receipt_034'.$id.'.pdf');
+        // $dompdf->loadHtml($html, 'UTF-8');
+        // $dompdf->render();
+        // $dompdf->stream('my.pdf',array('Attachment'=>0));
         // $pdf = PDF::loadview('print_receipt', compact('orders'));
         // $pdf->render();
         // $pdf->setPaper('Legal', 'horizontal');
@@ -117,5 +123,16 @@ class ReservationController extends Controller
         $reservation = Reservation::where('reservation_id', $order_latest)->delete();
         // $orders->delete();
         return redirect('/');
+    }
+
+    public function sendmail($id){
+        $usermail = DB::table('reservations')->where('reservation_id', $id)->get('email');
+        Mail::to($usermail)->send(new mailsend());
+        return redirect('/');
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new DataExport, 'reservation.xlsx');
     }
 }

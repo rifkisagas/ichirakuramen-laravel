@@ -51,3 +51,7 @@ Route::get('/test', [ReservationController::class, 'test']);
 // });
 
 Route::get('/print_receipt/{id}', [ReservationController::class, 'print_receipt']);
+
+Route::get('/sendmail/{id}', [ReservationController::class, 'sendmail']);
+
+Route::get('/export_excel', [ReservationController::class, 'export_excel']);

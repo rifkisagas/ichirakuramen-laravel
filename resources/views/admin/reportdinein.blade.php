@@ -27,11 +27,11 @@
                     <td>{{$datas->datereservation}}</td>
                     <td>{{$datas->timerange}}</td>
                     @if($datas->status == "PAID/PROCESS")
-                    <td><button class="btn btn-warning">{{$datas->status}}</button></td>
+                    <td><span class="label label-warning">{{$datas->status}}</span></td>
                     @elseif($datas->status == "DONE")
-                    <td><button class="btn btn-success">{{$datas->status}}</button></td>
+                    <td><span class="label label-success">{{$datas->status}}</span></td>
                     @else
-                    <td><button class="btn btn-danger">{{$datas->status}}</button></td>
+                    <td><span class="label label-danger">{{$datas->status}}</span></td>
                     @endif
                   </tr>
                 @endif

@@ -276,7 +276,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          You're about to cancel your order and go back to the Reservation menu.
+          You're about to cancel your order and go back to the Main menu.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, back to transaction</button>
@@ -312,7 +312,7 @@ function redirect(){
   setTimeout(backurl, 6000);
 }
 function backurl(){
-  document.location.href = '/';
+  document.location.href = '/sendmail/{{$order_id}}';
 }
 
 $(window).load(function(){
